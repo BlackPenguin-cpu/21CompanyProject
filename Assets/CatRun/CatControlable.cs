@@ -14,9 +14,11 @@ public class CatControlable : MonoBehaviour
     Animator anim;
     State state;
     public float JumpPower;
+    private int JumpCount;
     // Start is called before the first frame update
     void Start()
     {
+        JumpCount = 1;
         anim = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
     }
@@ -25,10 +27,11 @@ public class CatControlable : MonoBehaviour
     void Update()
     {
         anim.SetInteger("State", (int)state);
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && JumpCount == 1)
         {
+            JumpCount = 0;
             state = State.JUMP;
-            rigid.AddForce(new Vector3(0, JumpPower, 0),ForceMode2D.Impulse);
+            rigid.AddForce(new Vector3(0, JumpPower, 0), ForceMode2D.Impulse);
             StartCoroutine(Jump());
         }
     }
@@ -40,6 +43,7 @@ public class CatControlable : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        JumpCount = 1;
         if (collision.gameObject.tag.Contains("IronFan"))
         {
             //추후 수정 필요

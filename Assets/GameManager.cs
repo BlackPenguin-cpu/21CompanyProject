@@ -11,6 +11,7 @@ public class GameManager : Singleton<GameManager>
     public float nowTime;
     public int StageValue;
     public string[] StageName;
+    public int Life;
 
     public Slider slider;
     public Image blackScreen;
