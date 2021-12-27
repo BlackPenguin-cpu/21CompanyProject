@@ -44,8 +44,9 @@ public class GameManager : Singleton<GameManager>
     public TextMeshProUGUI ScoreText;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Awake()
     {
+        GameStart();
     }
 
     // Update is called once per frame

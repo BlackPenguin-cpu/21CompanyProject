@@ -12,7 +12,7 @@ public class CatControlable : MonoBehaviour
 {
     Rigidbody2D rigid;
     Animator anim;
-    CircleCollider2D Colider;
+    BoxCollider2D Colider;
     State state;
     public float JumpPower;
     private int JumpCount;
@@ -22,7 +22,7 @@ public class CatControlable : MonoBehaviour
     void Start()
     {
         JumpCount = 1;
-        Colider = GetComponent<CircleCollider2D>();
+        Colider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
     }
