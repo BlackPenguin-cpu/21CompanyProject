@@ -63,11 +63,7 @@ public class CatControlable : MonoBehaviour
         rigid.AddForce(new Vector3(6, 0, 0), ForceMode2D.Impulse);
         rigid.AddTorque(-5, ForceMode2D.Impulse);
 
-        GameManager.Instance.StartCoroutine(Test());
+        StartCoroutine(GameManager.Instance.ChangeScene(false, 1.5f));
     }
 
-    IEnumerator Test()
-    {
-        yield return StartCoroutine(GameManager.Instance.ChangeScene(false, 1.5f));
-    }
 }

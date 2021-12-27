@@ -46,7 +46,8 @@ public class GameManager : Singleton<GameManager>
     // Start is called before the first frame update
     protected override void Awake()
     {
-        GameStart();
+        base.Awake();
+        Stop = true;
     }
 
     // Update is called once per frame
@@ -115,6 +116,8 @@ public class GameManager : Singleton<GameManager>
         {
             StageValue = StageName.Count;
         }
+        Stop = false;
+
         //전에 했던 게임은 안나오게 수정 필요   (스택형 랜덤 사용 요구)
         int randnum = Random.Range(0, StageValue);
         SceneManager.LoadScene(StageName[randnum]);
@@ -133,6 +136,7 @@ public class GameManager : Singleton<GameManager>
     }
     public void GameStart()
     {
+        Stop = false;
         StageValue = StageName.Count;
         Life = 3;
         NextGame();
