@@ -38,6 +38,7 @@ public class Manager : MonoBehaviour
             MainCamara.GetComponent<Transform>().position += new Vector3(0f, shake2, 0f);
             Invoke("shake3", 0.01f);
             shake2 -= Time.deltaTime * 0.02f;
+            Invoke("NextScene", 5f);
         }
         if (level == 1)
         {
@@ -64,6 +65,7 @@ public class Manager : MonoBehaviour
             count++;
             MainCamara.GetComponent<Transform>().position = shake;
             Invoke("shake", 0.1f);
+            Invoke("NextScene", 5f);
         }
 
         if (count < max)
@@ -82,6 +84,11 @@ public class Manager : MonoBehaviour
     void shake3()
     {
         MainCamara.GetComponent<Transform>().position = new Vector3(0, 0, -10f);
+    }
+
+    void NextScene()//여기에 다음 씬 넘어가는거 쓰면 댐
+    {
+        Debug.Log("끝남 우왕");
     }
 
 }
