@@ -21,11 +21,10 @@ public class MainBoard : MonoBehaviour
     {
         
         Debug.Log("확인 gogo");
-        
-        //이 밑에 코드에 GoGame를 지우고 씬 이름 넣으면 그곳으로 이동!
-        SceneManager.LoadScene("GoGame");
-        
+
+        //이부분 수정 필요           시작 함수를 따로 만들자
+        GameManager.Instance.GameStart();
     }
 
-  
+
 }
