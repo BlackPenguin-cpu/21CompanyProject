@@ -1591,6 +1591,8 @@ MonoBehaviour:
   StageValue: 0
   StageName:
   - CatRun
+  - cat
+  Life: 0
   slider: {fileID: 857176882}
   blackScreen: {fileID: 1816195041}
   text: {fileID: 1349994584}
