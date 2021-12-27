@@ -12,13 +12,17 @@ public class CatControlable : MonoBehaviour
 {
     Rigidbody2D rigid;
     Animator anim;
+    CircleCollider2D Colider;
     State state;
     public float JumpPower;
     private int JumpCount;
+
+    public bool Die;
     // Start is called before the first frame update
     void Start()
     {
         JumpCount = 1;
+        Colider = GetComponent<CircleCollider2D>();
         anim = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
     }
@@ -41,14 +45,29 @@ public class CatControlable : MonoBehaviour
         state = State.RUN;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         JumpCount = 1;
         if (collision.gameObject.tag.Contains("IronFan"))
         {
-            //추후 수정 필요
-            Debug.Log("게임오버");
-            Destroy(gameObject);
+            GameOver();
         }
+    }
+
+    void GameOver()
+    {
+        Debug.Log("게임오버");
+        Die = true;
+        rigid.freezeRotation = false;
+        Colider.isTrigger = true;
+        rigid.AddForce(new Vector3(6, 0, 0), ForceMode2D.Impulse);
+        rigid.AddTorque(-5, ForceMode2D.Impulse);
+
+        GameManager.Instance.StartCoroutine(Test());
+    }
+
+    IEnumerator Test()
+    {
+        yield return StartCoroutine(GameManager.Instance.ChangeScene(false, 1.5f));
     }
 }
