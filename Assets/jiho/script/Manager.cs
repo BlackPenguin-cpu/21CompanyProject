@@ -86,10 +86,4 @@ public class Manager : MonoBehaviour
         MainCamara.GetComponent<Transform>().position = new Vector3(0, 0, -10f);
     }
 
-    void NextScene()//여기에 다음 씬 넘어가는거 쓰면 댐
-    {
-        Debug.Log("끝남 우왕");
-
-    }
-
 }
