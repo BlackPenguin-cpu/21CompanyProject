@@ -9,12 +9,15 @@ public class timer : MonoBehaviour
     public float sec = 5;
     void Start()
     {
-        
+
     }
 
     void Update()
     {
         UI.GetComponent<Slider>().value = sec;
-        sec -= Time.deltaTime;
+        if (sec > 0)
+        {
+            sec -= Time.deltaTime;
+        }
     }
 }
