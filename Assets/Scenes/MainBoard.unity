@@ -553,7 +553,7 @@ MonoBehaviour:
   isLose: 0
   StageName:
   - CatRun
-  - cat
+  - Cat
   - MountainFire
   Life: 3
   Stage: 0

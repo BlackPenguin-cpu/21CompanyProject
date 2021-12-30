@@ -58,13 +58,14 @@ public class GameManager : Singleton<GameManager>
         {
             nowTime = 0;
             slider.gameObject.SetActive(false);
-            if (SceneManager.GetActiveScene().name == "Catrun")
+            if (SceneManager.GetActiveScene().name == "CatRun")
             {
                 StartCoroutine(ChangeScene(true, 0f));
             }
             else if (SceneManager.GetActiveScene().name == "MountainFire")
             {
-                StartCoroutine(ChangeScene(false, 0f));
+                FindObjectOfType<FireManager>().GameOver();
+                StartCoroutine(ChangeScene(false, 5f));
             }
         }
         if (!Stop) nowTime += Time.deltaTime;
@@ -103,7 +104,6 @@ public class GameManager : Singleton<GameManager>
         blackScreen.gameObject.SetActive(false);
         StageText.text = "";
         ScoreText.text = "";
-        slider.gameObject.SetActive(true);
         Time.timeScale = 1;
 
         nowTime = 0;
@@ -129,6 +129,11 @@ public class GameManager : Singleton<GameManager>
         int randnum = Random.Range(0, StageValue);
         SceneManager.LoadScene(StageName[randnum]);
         string index = StageName[randnum];
+        if (index != "Cat")
+        {
+            Debug.Log(index);
+            slider.gameObject.SetActive(true);
+        }
         StageName.RemoveAt(randnum);
         StageName.Add(index);
         StageValue--;
