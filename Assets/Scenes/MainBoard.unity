@@ -553,7 +553,7 @@ MonoBehaviour:
   isLose: 0
   StageName:
   - CatRun
-  - cat
+  - Cat
   Life: 3
   Stage: 0
   slider: {fileID: 647936706}

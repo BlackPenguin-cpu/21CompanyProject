@@ -25,7 +25,7 @@ public class Manager : MonoBehaviour
 
     void Update()
     {
-        
+
         float x = Random.Range(-0.1f, 0.1f);
         float y = Random.Range(-0.1f, 0.1f);
         timer.GetComponent<Slider>().value = sec;
@@ -57,6 +57,7 @@ public class Manager : MonoBehaviour
         if (count >= max)
         {
             cat.GetComponent<Transform>().position += end * 4f * Time.deltaTime;
+            StartCoroutine(GameManager.Instance.ChangeScene(true, 5f));
         }
 
         if (Input.GetMouseButtonUp(0) && count < max)
@@ -65,7 +66,6 @@ public class Manager : MonoBehaviour
             count++;
             MainCamara.GetComponent<Transform>().position = shake;
             Invoke("shake", 0.1f);
-            StartCoroutine(GameManager.Instance.ChangeScene(true, 5f));
         }
 
         if (count < max)
