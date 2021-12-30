@@ -10,8 +10,17 @@ public class FireManager : ObjectPool<Fire>
         base.Start();
         for (int i = 0; i < FireCount; i++)
         {
-            FireManager.Instance.GetObj(new Vector3(Random.Range(-8.0f, 8.0f), -3, 0), Quaternion.identity, transform, true);
+            Instance.GetObj(new Vector3(Random.Range(-8.0f, 8.0f), -3, 0), Quaternion.identity, transform, true);
         }
     }
-
+    private void Update()
+    {
+    }
+    public void WinCheck()
+    {
+        if (!FindObjectOfType<Fire>())
+        {
+            GameManager.Instance.ChangeScene(true, 1);
+        }
+    }
 }

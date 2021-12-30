@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainBoard.unity
     guid: 5cab99df99b8f4b48b1fd2894c7f6f90
   - enabled: 1
-    path: Assets/jiho/cat.unity
+    path: Assets/Scenes/cat.unity
     guid: 24d562d916b906848b790c5ac786ebf2
   - enabled: 1
     path: Assets/Scenes/CatRun.unity

@@ -58,7 +58,14 @@ public class GameManager : Singleton<GameManager>
         {
             nowTime = 0;
             slider.gameObject.SetActive(false);
-            StartCoroutine(ChangeScene(true, 0f));
+            if (SceneManager.GetActiveScene().name == "Catrun")
+            {
+                StartCoroutine(ChangeScene(true, 0f));
+            }
+            else if (SceneManager.GetActiveScene().name == "MountainFire")
+            {
+                StartCoroutine(ChangeScene(false, 0f));
+            }
         }
         if (!Stop) nowTime += Time.deltaTime;
     }
@@ -78,7 +85,7 @@ public class GameManager : Singleton<GameManager>
             while (Scorenow != Score)
             {
                 Scorenow++;
-                ScoreText.text = "Combo: " + Combo +" Score: " + Scorenow.ToString();
+                ScoreText.text = "Combo: " + Combo + " Score: " + Scorenow.ToString();
                 yield return new WaitForSecondsRealtime(0.005f);
             }
         }

@@ -228,9 +228,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.29, y: 0.2, z: 0}
   m_LocalScale: {x: 4.4083, y: 9.7642, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 899107927}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &528814546
 GameObject:
@@ -433,12 +434,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 899107924}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.1841, y: 0.1179, z: 0}
-  m_LocalScale: {x: 4.4083, y: 9.7642, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.098133, y: -0.008408267, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 266880753}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1228968658
 GameObject:
@@ -520,7 +521,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -540,7 +541,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1228968658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.85, z: 0}
+  m_LocalPosition: {x: 0, y: 2.74, z: 0}
   m_LocalScale: {x: 0.9575, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -558,6 +559,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee22a041027f215489b03278bb82bcf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isNotSingle: 0
+  originManagedObj: {fileID: -7403510390290250818, guid: 4ec57b200d1ec294bb01333acbc065e8, type: 3}
+  WaterTank: {fileID: 1754110320}
 --- !u!58 &1228968663
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -574,6 +578,36 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.50000006
+--- !u!1 &1754110320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1754110321}
+  m_Layer: 0
+  m_Name: WaterTank
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1754110321
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754110320}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.300236, y: -0.26339304, z: -11.034634}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1802691085
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,7 +638,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isNotSingle: 0
-  FireCount: 0
+  originManagedObj: {fileID: 7687684334927255833, guid: c4de2d6369f8b514fbb3069d35baabbf, type: 3}
+  FireCount: 4
 --- !u!4 &1802691087
 Transform:
   m_ObjectHideFlags: 0
@@ -617,7 +652,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2088542664
 GameObject:

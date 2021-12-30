@@ -59,7 +59,6 @@ public class ObjectPool<T> : Singleton<ObjectPool<T>> where T : MonoBehaviour
         obj.transform.rotation = Quaternion.identity;
         obj.transform.SetParent(trnDisable);
         obj.gameObject.SetActive(false);
-        Debug.Log(obj.gameObject.activeSelf);
         pool.Add(obj);
     }
 
