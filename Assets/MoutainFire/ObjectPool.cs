@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-//using ManagedObj = Water;
 public class ObjectPool<T> : Singleton<ObjectPool<T>> where T : MonoBehaviour
 {
     [SerializeField] T originManagedObj;
@@ -13,6 +12,7 @@ public class ObjectPool<T> : Singleton<ObjectPool<T>> where T : MonoBehaviour
     protected override void Awake()
     {
         var obj = new GameObject("Disable");
+        pool.Find((T x) => x.tag == "dasd");
         obj.transform.SetParent(transform);
         trnDisable = obj.transform;
     }
