@@ -10,7 +10,7 @@ public class Water : MonoBehaviour
     }
     void Update()
     {
-        
+
     }
     void returnFire()
     {
@@ -19,11 +19,12 @@ public class Water : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "fire")
+        if (collision.tag == "fire")
         {
             Fire fire = collision.GetComponent<Fire>();
 
             fire._Hp--;
+            HeliCopter.Instance.ReturnObj(gameObject.GetComponent<Water>());
         }
     }
 }

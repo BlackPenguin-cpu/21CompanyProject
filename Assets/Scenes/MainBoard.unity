@@ -553,7 +553,8 @@ MonoBehaviour:
   isLose: 0
   StageName:
   - CatRun
-  - Cat
+  - cat
+  - MountainFire
   Life: 3
   Stage: 0
   slider: {fileID: 647936706}

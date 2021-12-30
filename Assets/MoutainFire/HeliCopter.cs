@@ -45,31 +45,26 @@ public class HeliCopter : ObjectPool<Water>
             if (cam.ScreenToWorldPoint(Input.mousePosition).x > 0 && rigid.velocity.x < 8)
             {
                 rigid.AddForce(new Vector2(3 * Time.deltaTime, 0), ForceMode2D.Impulse);
-                rigid.AddTorque(-0.2f * Time.deltaTime, ForceMode2D.Impulse);
+                if (transform.localEulerAngles.z < 325f)
+                {
+                    rigid.AddTorque(-2f * Time.deltaTime, ForceMode2D.Impulse);
+                }
+                else
+                    rigid.AddTorque(-0.2f * Time.deltaTime, ForceMode2D.Impulse);
             }
             else if (cam.ScreenToWorldPoint(Input.mousePosition).x < 0 && rigid.velocity.x > -8)
             {
                 rigid.AddForce(new Vector2(-3 * Time.deltaTime, 0), ForceMode2D.Impulse);
+                if (transform.localEulerAngles.z > 325f)
+                {
+                    rigid.AddTorque(2f * Time.deltaTime, ForceMode2D.Impulse);
+                }
                 rigid.AddTorque(0.2f * Time.deltaTime, ForceMode2D.Impulse);
             }
         }
         else
         {
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, 0), 10 * Time.deltaTime);
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-            StartCoroutine(SetNormal());
-        }
-    }
-    IEnumerator SetNormal()
-    {
-        float ExitTime = 0;
-        while (ExitTime < 1)
-        {
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, 0), 20 * Time.deltaTime);
-            ExitTime += Time.deltaTime;
-            yield return 0;
         }
     }
 }

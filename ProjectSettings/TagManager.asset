@@ -6,6 +6,7 @@ TagManager:
   tags:
   - IronFan
   - Pigeon
+  - fire
   layers:
   - Default
   - TransparentFX
