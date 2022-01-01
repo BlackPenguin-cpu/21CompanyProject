@@ -22,8 +22,8 @@ public class Fire : MonoBehaviour
             transform.position = new Vector3(transform.position.x, -4f + Scale * Hp, 1);
             if (value < 0)
             {
-                FireManager.Instance.ReturnObj(gameObject.GetComponent<Fire>());
                 fireManager.Life--;
+                FireManager.Instance.ReturnObj(gameObject.GetComponent<Fire>());
             }
             Hp = value;
         }

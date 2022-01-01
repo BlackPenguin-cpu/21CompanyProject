@@ -13,6 +13,8 @@ public class GameManager : Singleton<GameManager>
     public bool Stop;
     public int Score;
     public int Combo;
+    public int Level;
+    // 쉬움 보통 어려움
 
     [SerializeField] bool isLose;
     [SerializeField] private List<string> StageName;
@@ -122,6 +124,7 @@ public class GameManager : Singleton<GameManager>
         if (StageValue < 0)
         {
             StageValue = StageName.Count;
+            Level++;
         }
         Stop = false;
 
