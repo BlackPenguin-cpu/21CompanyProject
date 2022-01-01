@@ -32,12 +32,10 @@ public class HeliCopter : ObjectPool<Water>
     {
         if (transform.localEulerAngles.z > 35f && transform.localEulerAngles.z < 100f)
         {
-            Debug.Log("+");
             transform.rotation = Quaternion.Euler(0, 0, 35f);
         }
         if (transform.localEulerAngles.z < 325f && transform.localEulerAngles.z > 100f)
         {
-            Debug.Log("-");
             transform.rotation = Quaternion.Euler(0, 0, 325f);
         }
         if (Input.GetMouseButton(0))

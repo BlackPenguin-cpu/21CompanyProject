@@ -640,6 +640,7 @@ MonoBehaviour:
   isNotSingle: 0
   originManagedObj: {fileID: 7687684334927255833, guid: c4de2d6369f8b514fbb3069d35baabbf, type: 3}
   FireCount: 2
+  Life: 0
 --- !u!4 &1802691087
 Transform:
   m_ObjectHideFlags: 0
