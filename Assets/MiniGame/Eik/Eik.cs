@@ -5,7 +5,6 @@ using DG.Tweening;
 
 public class Eik : MonoBehaviour
 {
-    
     public int spd;
 
     // Start is called before the first frame update

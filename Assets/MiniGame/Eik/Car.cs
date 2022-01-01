@@ -16,6 +16,6 @@ public class Car : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=gold_metal&logNo=220499531497
     }
 }
