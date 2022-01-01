@@ -9,6 +9,18 @@ public class FireManager : ObjectPool<Fire>
     protected override void Start()
     {
         base.Start();
+        switch(GameManager.Instance.Level)
+        {
+            case 1:
+                FireCount = 2;
+                break;
+            case 2:
+                FireCount = 4;
+                break;
+            case 3:
+                FireCount = 6;
+                break;
+        }
         for (int i = 0; i < FireCount; i++)
         {
             Instance.GetObj(new Vector3(Random.Range(-8.0f, 8.0f), -3, 0), Quaternion.identity, transform, true);

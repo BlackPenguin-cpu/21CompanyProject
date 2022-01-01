@@ -12,7 +12,6 @@ public class ObjectPool<T> : Singleton<ObjectPool<T>> where T : MonoBehaviour
     protected override void Awake()
     {
         var obj = new GameObject("Disable");
-        pool.Find((T x) => x.tag == "dasd");
         obj.transform.SetParent(transform);
         trnDisable = obj.transform;
     }
