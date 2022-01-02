@@ -8,6 +8,8 @@ TagManager:
   - Pigeon
   - fire
   - Chocolate
+  - deadline
+  - lifeline
   layers:
   - Default
   - TransparentFX
