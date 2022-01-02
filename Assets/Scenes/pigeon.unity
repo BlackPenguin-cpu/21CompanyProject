@@ -404,9 +404,11 @@ MonoBehaviour:
   UI: {fileID: 223251912}
   level: 1
   sec: 5
-  TrafficLight: {fileID: 827977955}
+  redlight: {fileID: 884705246}
+  greenlight: {fileID: 827977955}
   road: {fileID: 1264721372}
   deadline: {fileID: 2101563115}
+  on: 1
 --- !u!4 &246433473
 Transform:
   m_ObjectHideFlags: 0
@@ -545,7 +547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &827977956
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -627,7 +629,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &884705247
 SpriteRenderer:
   m_ObjectHideFlags: 0

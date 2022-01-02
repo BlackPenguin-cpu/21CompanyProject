@@ -37,7 +37,6 @@ public class PigeonFly : MonoBehaviour
     {
         if(collider.tag == "deadline")
         {
-            Debug.Log("ю╦╬с аж╠щ");
             Destroy(gameObject);
         }
     }

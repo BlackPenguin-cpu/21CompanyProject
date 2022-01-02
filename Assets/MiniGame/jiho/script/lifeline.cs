@@ -15,7 +15,8 @@ public class lifeline : MonoBehaviour
     {
         if(life == 0)//게임 클리어
         {
-            Time.timeScale = 0;
+            level.GetComponent<timer>().clear = false;
+            StartCoroutine(GameManager.Instance.ChangeScene(true, 2f));
         }
     }
 

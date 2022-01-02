@@ -13,6 +13,7 @@ public class timer : MonoBehaviour
     public GameObject road;
     public GameObject deadline;
     public bool on = true;
+    public bool clear = true;
     void Start()
     {
         LevelTime();
@@ -22,7 +23,7 @@ public class timer : MonoBehaviour
     void Update()
     {
         UI.GetComponent<Slider>().value = sec;
-        if (sec > 0)
+        if (sec > 0 && clear)
         {
             sec -= Time.deltaTime;
         }
@@ -57,8 +58,8 @@ public class timer : MonoBehaviour
 
     void greenlighton()//요기가 게임 오버
     {
-
         redlight.SetActive(false);
         greenlight.SetActive(true);
+        StartCoroutine(GameManager.Instance.ChangeScene(false, 2f));
     }
 }
