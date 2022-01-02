@@ -18,7 +18,6 @@ public class Manager : MonoBehaviour
     public float speeeeeeeeed;
     public float shake2 = 0.0000000005f;
     public bool check;
-    Vector3 end = new Vector3(-1f, 0f, 0f);
 
     void Start()
     {
@@ -36,65 +35,51 @@ public class Manager : MonoBehaviour
             speeeeeeeeed += Time.deltaTime * 3.21221f;
             cat.SetActive(false);
             die.SetActive(true);
-            die.GetComponent<Transform>().position += end * speeeeeeeeed * Time.deltaTime;
-            MainCamara.GetComponent<Transform>().position += new Vector3(0f, shake2, 0f);
-            Invoke("shake3", 0.01f);
-            shake2 -= Time.deltaTime * 0.02f;
+            die.transform.position += Vector3.left * speeeeeeeeed * Time.deltaTime;
+            MainCamara.transform.DOShakePosition(0.5f,0.1f,10,360,false,true);
             if (!check)
             {
                 check = true;
                 StartCoroutine(GameManager.Instance.ChangeScene(false, 4f));
             }
         }
-        if (level == 1)
+        switch (level)
         {
-            max = click[0];
-        }
-        else if (level == 2)
-        {
-            max = click[1];
-        }
-        else if (level == 3)
-        {
-            max = click[2];
+            case 1:
+                max = click[0];
+                break;
+            case 2:
+                max = click[1];
+                break;
+            case 3:
+                max = click[2];
+                break;
+
         }
 
 
-        if (count >= max)
+        if (count == max)
         {
-
-            cat.transform.DOMoveX(-17, 4);
             if (!check)
             {
+                cat.transform.DOMoveX(-17, 4);
                 check = true;
                 StartCoroutine(GameManager.Instance.ChangeScene(true, 4f));
             }
         }
 
-        if (Input.GetMouseButtonUp(0) && count < max)
+        if (Input.GetMouseButtonUp(0) && count < max && !check)
         {
             Vector3 shake = new Vector3(x, y, -10f);
+            MainCamara.transform.DOShakePosition(0.2f, 0.2f,10,360);
             count++;
-            MainCamara.GetComponent<Transform>().position = shake;
-            Invoke("shake", 0.1f);
         }
 
         if (count < max)
         {
             sec -= Time.deltaTime;
         }
-
-
     }
 
-    void shake()
-    {
-        MainCamara.GetComponent<Transform>().position = new Vector3(0, 0, -10f);
-    }
-
-    void shake3()
-    {
-        MainCamara.GetComponent<Transform>().position = new Vector3(0, 0, -10f);
-    }
 
 }
