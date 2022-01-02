@@ -44,7 +44,7 @@ public class HeliCopter : ObjectPool<Water>
         {
             if (cam.ScreenToWorldPoint(Input.mousePosition).x > 0 && rigid.velocity.x < 8)
             {
-                rigid.AddForce(new Vector2(3 * Time.deltaTime, 0), ForceMode2D.Impulse);
+                rigid.AddForce(new Vector2(5 * Time.deltaTime, 0), ForceMode2D.Impulse);
                 if (transform.localEulerAngles.z < 325f)
                 {
                     rigid.AddTorque(-2f * Time.deltaTime, ForceMode2D.Impulse);
@@ -54,7 +54,7 @@ public class HeliCopter : ObjectPool<Water>
             }
             else if (cam.ScreenToWorldPoint(Input.mousePosition).x < 0 && rigid.velocity.x > -8)
             {
-                rigid.AddForce(new Vector2(-3 * Time.deltaTime, 0), ForceMode2D.Impulse);
+                rigid.AddForce(new Vector2(-5 * Time.deltaTime, 0), ForceMode2D.Impulse);
                 if (transform.localEulerAngles.z > 325f)
                 {
                     rigid.AddTorque(2f * Time.deltaTime, ForceMode2D.Impulse);

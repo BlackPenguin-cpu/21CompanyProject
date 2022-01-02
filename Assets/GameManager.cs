@@ -64,6 +64,10 @@ public class GameManager : Singleton<GameManager>
             {
                 StartCoroutine(ChangeScene(false, FindObjectOfType<FireManager>().Gameoverr()));
             }
+            else if(SceneManager.GetActiveScene().name == "CatRun")
+            {
+                StartCoroutine(ChangeScene(true, 0.01f));
+            }
         }
         if (Input.GetKeyDown(KeyCode.F1))
         {
@@ -71,12 +75,24 @@ public class GameManager : Singleton<GameManager>
         }
         if (!Stop) nowTime += Time.deltaTime;
     }
+    public IEnumerator ChangeScene(bool isWin, float Delay)
+    {
+        slider.gameObject.SetActive(false);
+        Stop = true;
+        yield return new WaitForSeconds(Delay);
+        StartCoroutine(_ChangeScene(isWin));
+    }
     public IEnumerator ChangeScene(bool isWin, IEnumerator coroutine)
     {
         slider.gameObject.SetActive(false);
-        int Scorenow = Score;
         Stop = true;
         yield return StartCoroutine(coroutine);
+        StartCoroutine(_ChangeScene(isWin));
+    }
+
+    private IEnumerator _ChangeScene(bool isWin)
+    {
+        int Scorenow = Score;
         Time.timeScale = 0;
         if (isWin)
         {
