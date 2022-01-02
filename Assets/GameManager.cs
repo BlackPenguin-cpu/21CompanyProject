@@ -60,24 +60,23 @@ public class GameManager : Singleton<GameManager>
         {
             nowTime = 0;
             slider.gameObject.SetActive(false);
-            if (SceneManager.GetActiveScene().name == "CatRun")
+            if (SceneManager.GetActiveScene().name == "MountainFire")
             {
-                StartCoroutine(ChangeScene(true, 0f));
+                StartCoroutine(ChangeScene(false, FindObjectOfType<FireManager>().Gameoverr()));
             }
-            else if (SceneManager.GetActiveScene().name == "MountainFire")
-            {
-                FindObjectOfType<FireManager>().GameOver();
-                StartCoroutine(ChangeScene(false, 5f));
-            }
+        }
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            Stop = false;
         }
         if (!Stop) nowTime += Time.deltaTime;
     }
-    public IEnumerator ChangeScene(bool isWin, float DelayTime)
+    public IEnumerator ChangeScene(bool isWin, IEnumerator coroutine)
     {
         slider.gameObject.SetActive(false);
         int Scorenow = Score;
         Stop = true;
-        yield return new WaitForSeconds(DelayTime);
+        yield return StartCoroutine(coroutine);
         Time.timeScale = 0;
         if (isWin)
         {

@@ -7,11 +7,13 @@ public class HeliCopter : ObjectPool<Water>
     Rigidbody2D rigid;
     Camera cam;
     [SerializeField] GameObject WaterTank;
+    FireManager fireManager;
     //[SerializeField] GameObject Water;
     float Timer;
     protected override void Start()
     {
         base.Start();
+        fireManager = FindObjectOfType<FireManager>();
         rigid = GetComponent<Rigidbody2D>();
         cam = FindObjectOfType<Camera>();
     }
@@ -20,7 +22,7 @@ public class HeliCopter : ObjectPool<Water>
     void Update()
     {
         Timer += Time.deltaTime;
-        if (Timer > 0.01f)
+        if (Timer > 0.01f && fireManager.End == false)
         {
             Timer = 0;
             GetObj(transform.position, Quaternion.identity, WaterTank.transform, true);

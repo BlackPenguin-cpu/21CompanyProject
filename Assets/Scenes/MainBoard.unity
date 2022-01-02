@@ -550,6 +550,7 @@ MonoBehaviour:
   Stop: 0
   Score: 0
   Combo: 0
+  Level: 0
   isLose: 0
   StageName:
   - CatRun
