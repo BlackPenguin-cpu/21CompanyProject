@@ -556,6 +556,7 @@ MonoBehaviour:
   - CatRun
   - Cat
   - MountainFire
+  - pigeon
   Life: 3
   Stage: 0
   slider: {fileID: 647936706}
