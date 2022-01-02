@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Manager : MonoBehaviour
 {
@@ -56,8 +57,9 @@ public class Manager : MonoBehaviour
 
         if (count >= max)
         {
-            cat.GetComponent<Transform>().position += end * 4f * Time.deltaTime;
-            StartCoroutine(GameManager.Instance.ChangeScene(true, 5f));
+            count = 0;
+            transform.DOMoveX(-17,4);
+            StartCoroutine(GameManager.Instance.ChangeScene(true, 4f));
         }
 
         if (Input.GetMouseButtonUp(0) && count < max)

@@ -10,7 +10,7 @@ public class FireManager : ObjectPool<Fire>
     protected override void Start()
     {
         base.Start();
-        switch(GameManager.Instance.Level)
+        switch (GameManager.Instance.Level)
         {
             case 1:
                 FireCount = 2;
@@ -43,7 +43,7 @@ public class FireManager : ObjectPool<Fire>
     {
         if (Life <= 0)
         {
-            GameManager.Instance.ChangeScene(true, 0.1f);
+            StartCoroutine(GameManager.Instance.ChangeScene(true, 0.1f));
             End = true;
         }
     }

@@ -79,7 +79,9 @@ public class GameManager : Singleton<GameManager>
     {
         slider.gameObject.SetActive(false);
         Stop = true;
-        yield return new WaitForSeconds(Delay);
+        Debug.Log("fgh");
+        yield return new WaitForSecondsRealtime(Delay);
+        Debug.Log("jkl");
         StartCoroutine(_ChangeScene(isWin));
     }
     public IEnumerator ChangeScene(bool isWin, IEnumerator coroutine)
