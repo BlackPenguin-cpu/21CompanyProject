@@ -16,7 +16,7 @@ public class EikCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (E.transform.position.x >= 0 && E.transform.position.x <= 7)
+        if (E.transform.position.x >= 0 && E.transform.position.x <= 43)
         {
             transform.position = EikCam.transform.position + new Vector3(0, 0, -10);
         }
