@@ -79,9 +79,7 @@ public class GameManager : Singleton<GameManager>
     {
         slider.gameObject.SetActive(false);
         Stop = true;
-        Debug.Log("fgh");
         yield return new WaitForSecondsRealtime(Delay);
-        Debug.Log("jkl");
         StartCoroutine(_ChangeScene(isWin));
     }
     public IEnumerator ChangeScene(bool isWin, IEnumerator coroutine)
@@ -149,7 +147,7 @@ public class GameManager : Singleton<GameManager>
         int randnum = Random.Range(0, StageValue);
         SceneManager.LoadScene(StageName[randnum]);
         string index = StageName[randnum];
-        if (index != "Cat")
+        if (index != "Cat" && index != "pigeon")
         {
             Debug.Log(index);
             slider.gameObject.SetActive(true);
@@ -162,7 +160,7 @@ public class GameManager : Singleton<GameManager>
     {
         blackScreen.gameObject.SetActive(true);
         StageText.text = "GameOver...";
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSecondsRealtime(2);
 
         SceneManager.LoadScene("MainBoard");
     }

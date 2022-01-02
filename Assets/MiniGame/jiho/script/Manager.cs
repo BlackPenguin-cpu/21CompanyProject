@@ -17,6 +17,7 @@ public class Manager : MonoBehaviour
     public int level = 1;
     public float speeeeeeeeed;
     public float shake2 = 0.0000000005f;
+    public bool check;
     Vector3 end = new Vector3(-1f, 0f, 0f);
 
     void Start()
@@ -39,7 +40,11 @@ public class Manager : MonoBehaviour
             MainCamara.GetComponent<Transform>().position += new Vector3(0f, shake2, 0f);
             Invoke("shake3", 0.01f);
             shake2 -= Time.deltaTime * 0.02f;
-            StartCoroutine(GameManager.Instance.ChangeScene(false, 5f));
+            if (!check)
+            {
+                check = true;
+                StartCoroutine(GameManager.Instance.ChangeScene(false, 4f));
+            }
         }
         if (level == 1)
         {
@@ -57,9 +62,13 @@ public class Manager : MonoBehaviour
 
         if (count >= max)
         {
-            count = 0;
-            transform.DOMoveX(-17,4);
-            StartCoroutine(GameManager.Instance.ChangeScene(true, 4f));
+
+            cat.transform.DOMoveX(-17, 4);
+            if (!check)
+            {
+                check = true;
+                StartCoroutine(GameManager.Instance.ChangeScene(true, 4f));
+            }
         }
 
         if (Input.GetMouseButtonUp(0) && count < max)

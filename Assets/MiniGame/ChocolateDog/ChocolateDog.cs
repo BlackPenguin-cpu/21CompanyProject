@@ -32,14 +32,14 @@ public class ChocolateDog : MonoBehaviour
     private void OnBecameInvisible()
     {
         Debug.Log("¾Èº¸¿µ");
-        ChocolateManager.Instance.Onclear();
+        StartCoroutine(GameManager.Instance.ChangeScene(true, GameClear()));
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Chocolate" && GameOver == false)
         {
             Destroy(collision.gameObject);
-            GameManager.Instance.ChangeScene(false, Gameover());
+            StartCoroutine(GameManager.Instance.ChangeScene(false, Gameover()));
         }
     }
     IEnumerator Gameover()

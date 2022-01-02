@@ -41,7 +41,7 @@ public class FireManager : ObjectPool<Fire>
     }
     private void Update()
     {
-        if (Life <= 0)
+        if (Life <= 0 && End == false)
         {
             StartCoroutine(GameManager.Instance.ChangeScene(true, 0.1f));
             End = true;

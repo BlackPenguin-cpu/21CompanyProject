@@ -35,8 +35,4 @@ public class ChocolateManager : Singleton<ChocolateManager>
             }
         }
     }
-    public void Onclear()
-    {
-        GameManager.Instance.ChangeScene(true, FindObjectOfType<ChocolateDog>().GameClear());
-    }
 }
