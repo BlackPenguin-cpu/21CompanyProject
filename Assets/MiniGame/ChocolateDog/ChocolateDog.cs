@@ -10,9 +10,11 @@ public class ChocolateDog : MonoBehaviour
     public bool GameOver;
 
     Rigidbody2D rigid;
+    Sprite sprite;
 
     private void Start()
     {
+        sprite = GetComponent<Sprite>();
         rigid = GetComponent<Rigidbody2D>();
     }
     void Update()
@@ -29,6 +31,7 @@ public class ChocolateDog : MonoBehaviour
     }
     private void OnBecameInvisible()
     {
+        Debug.Log("¾Èº¸¿µ");
         ChocolateManager.Instance.Onclear();
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -36,10 +39,19 @@ public class ChocolateDog : MonoBehaviour
         if (collision.tag == "Chocolate" && GameOver == false)
         {
             Destroy(collision.gameObject);
-            GameOver = true;
-            rigid.AddForce(new Vector2(2, 0), ForceMode2D.Impulse);
-            transform.DOLocalRotateQuaternion(Quaternion.Euler(0,0,-110), 1.0f);
-            GameManager.Instance.ChangeScene(false, 2);
+            GameManager.Instance.ChangeScene(false, Gameover());
         }
+    }
+    IEnumerator Gameover()
+    {
+        GameOver = true;
+        rigid.AddForce(new Vector2(2, 0), ForceMode2D.Impulse);
+        transform.DOLocalRotateQuaternion(Quaternion.Euler(0, 0, -110), 1.0f);
+        yield return new WaitForSeconds(2);
+    }
+
+    public IEnumerator GameClear(){
+        transform.DOMoveX(-17, 2);
+        yield return new WaitForSeconds(2);
     }
 }

@@ -50,11 +50,12 @@ public class CatControlable : MonoBehaviour
         JumpCount = 1;
         if (collision.gameObject.tag.Contains("IronFan"))
         {
-            GameOver();
+        StartCoroutine(GameManager.Instance.ChangeScene(false, GameOver()));
+            GameManager.Instance.ChangeScene(true,GameOver());
         }
     }
 
-    void GameOver()
+    IEnumerator GameOver()
     {
         Debug.Log("게임오버");
         Die = true;
@@ -62,8 +63,7 @@ public class CatControlable : MonoBehaviour
         Colider.isTrigger = true;
         rigid.AddForce(new Vector3(6, 0, 0), ForceMode2D.Impulse);
         rigid.AddTorque(-5, ForceMode2D.Impulse);
-
-        StartCoroutine(GameManager.Instance.ChangeScene(false, 1.5f));
+        yield return new WaitForSeconds(2);
     }
 
 }

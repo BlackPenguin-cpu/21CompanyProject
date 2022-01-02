@@ -6,6 +6,7 @@ public class FireManager : ObjectPool<Fire>
 {
     [SerializeField] int FireCount;
     public int Life;
+    public bool End;
     protected override void Start()
     {
         base.Start();
@@ -27,14 +28,13 @@ public class FireManager : ObjectPool<Fire>
         }
         Life = FireCount;
     }
-    public void GameOver()
+
+    public IEnumerator Gameoverr()
     {
-        StartCoroutine(Gameoverr());
-    }
-    IEnumerator Gameoverr()
-    {
+        End = true;
         for (int i = 0; i < 20; i++)
         {
+            Instance.GetObj(new Vector3(Random.Range(-8.0f, 8.0f), -3, 0), Quaternion.identity, transform, true);
             Instance.GetObj(new Vector3(Random.Range(-8.0f, 8.0f), -3, 0), Quaternion.identity, transform, true);
             yield return new WaitForSeconds(0.5f);
         }
@@ -43,7 +43,8 @@ public class FireManager : ObjectPool<Fire>
     {
         if (Life <= 0)
         {
-            GameManager.Instance.ChangeScene(true, 0);
+            GameManager.Instance.ChangeScene(true, Gameoverr());
+            End = true;
         }
     }
 }
