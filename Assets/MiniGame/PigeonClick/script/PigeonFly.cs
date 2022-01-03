@@ -14,11 +14,29 @@ public class PigeonFly : MonoBehaviour
 
     void Update()
     {
-        if (random == true)
+        XRandom();
+        PigeonDDukbaegi();
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.tag == "deadline")
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void XRandom()
+    {
+        if (random == true) //비둘기가 날라갈 x 좌표 랜덤으로 지정
         {
             random = false;
             random_x = Random.Range(-0.2f, 0.3f);
         }
+    }
+
+    void PigeonDDukbaegi()
+    {
         if (click)
         {
             if (random_x < 0f)
@@ -30,14 +48,6 @@ public class PigeonFly : MonoBehaviour
                 transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
             }
             GetComponent<Transform>().position += new Vector3(random_x, 0.1f, 0);
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if(collider.tag == "deadline")
-        {
-            Destroy(gameObject);
         }
     }
 }
