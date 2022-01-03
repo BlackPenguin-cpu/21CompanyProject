@@ -23,7 +23,6 @@ public class MainBoard : MonoBehaviour
         
         Debug.Log("확인 gogo");
 
-        //이부분 수정 필요           시작 함수를 따로 만들자
         GameManager.Instance.GameStart();
     }
 
