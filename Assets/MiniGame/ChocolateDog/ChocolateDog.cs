@@ -10,11 +10,9 @@ public class ChocolateDog : MonoBehaviour
     public bool GameOver;
 
     Rigidbody2D rigid;
-    Sprite sprite;
 
     private void Start()
     {
-        sprite = GetComponent<Sprite>();
         rigid = GetComponent<Rigidbody2D>();
     }
     void Update()
@@ -26,7 +24,7 @@ public class ChocolateDog : MonoBehaviour
         for (int i = 0; i < 100; i++)
         {
             transform.position += new Vector3(-BackSpeed * Time.deltaTime, 0, 0);
-            yield return new WaitForSeconds(0.005f);
+            yield return new WaitForSecondsRealtime(0.005f);
         }
     }
     private void OnBecameInvisible()
