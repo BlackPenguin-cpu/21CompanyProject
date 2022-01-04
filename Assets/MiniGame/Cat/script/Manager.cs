@@ -19,6 +19,9 @@ public class Manager : MonoBehaviour
     public float shake2 = 0.0000000005f;
     public bool check;
 
+    public SpriteRenderer renderer;
+    public List<Sprite> catcat;
+
     void Start()
     {
         ClickLevel();
@@ -89,6 +92,7 @@ public class Manager : MonoBehaviour
     void GameClear()
     {
         cat.transform.DOMoveX(-17, 4);
+        renderer.sprite = catcat[0];
         check = true;
         StartCoroutine(GameManager.Instance.ChangeScene(true, 4f));
     }
