@@ -9,6 +9,9 @@ public class ChocolateDog : MonoBehaviour
     public float BackSpeed;
     public bool GameOver;
 
+   // public SpriteRenderer renderer;
+   // public List<Sprite> dogdog;
+
     Rigidbody2D rigid;
 
     private void Start()
@@ -37,6 +40,7 @@ public class ChocolateDog : MonoBehaviour
         if (collision.tag == "Chocolate" && GameOver == false)
         {
             Destroy(collision.gameObject);
+          //  renderer.sprite = dogdog[0];
             StartCoroutine(GameManager.Instance.ChangeScene(false, Gameover()));
         }
     }
