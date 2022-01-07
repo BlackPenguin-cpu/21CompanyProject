@@ -554,7 +554,7 @@ MonoBehaviour:
   isLose: 0
   StageName:
   - CatRun
-  - Cat
+  - cat
   - MountainFire
   - pigeon
   - Chocolate
