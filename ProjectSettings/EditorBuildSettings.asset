@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainBoard.unity
     guid: 5cab99df99b8f4b48b1fd2894c7f6f90
   - enabled: 1
-    path: Assets/Scenes/Cat.unity
+    path: Assets/Scenes/cat.unity
     guid: 24d562d916b906848b790c5ac786ebf2
   - enabled: 1
     path: Assets/Scenes/CatRun.unity
@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Chocolate.unity
     guid: e26a17d4a302bad4c9534105f67e7637
+  - enabled: 1
+    path: Assets/Scenes/pigeon.unity
+    guid: a39c8100188f2e7459c934a43cf9f55c
   m_configObjects: {}
