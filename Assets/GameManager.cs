@@ -34,6 +34,7 @@ public class GameManager : Singleton<GameManager>
             if (value <= 0)
             {
                 isLose = true;
+                Debug.Log(isLose);
             }
             Life = value;
         }
@@ -79,9 +80,7 @@ public class GameManager : Singleton<GameManager>
     {
         slider.gameObject.SetActive(false);
         Stop = true;
-        Debug.Log("fgh");
         yield return new WaitForSecondsRealtime(Delay);
-        Debug.Log("jkl");
         StartCoroutine(_ChangeScene(isWin));
     }
     public IEnumerator ChangeScene(bool isWin, IEnumerator coroutine)
@@ -99,9 +98,9 @@ public class GameManager : Singleton<GameManager>
         if (isWin)
         {
             blackScreen.gameObject.SetActive(true);
-            StageText.text = "GREAT!!!";
+            StageText.text = "GREAT!!! - Life: " + Life;
             Combo++;
-            Score += 104 + (20 * Combo);
+            Score += 104 + (Random.Range(19,22) * Combo);
             while (Scorenow != Score)
             {
                 Scorenow++;
@@ -112,8 +111,8 @@ public class GameManager : Singleton<GameManager>
         else
         {
             blackScreen.gameObject.SetActive(true);
-            StageText.text = ":(";
-            Life--;
+            _Life--;
+            StageText.text = ":(  - Life: " + Life ;
             Combo = 0;
             ScoreText.text = "Combo: " + Combo + " Score: " + Score.ToString();
         }
@@ -123,7 +122,7 @@ public class GameManager : Singleton<GameManager>
         blackScreen.gameObject.SetActive(false);
         StageText.text = "";
         ScoreText.text = "";
-        Time.timeScale = 1;
+        Time.timeScale = LevelTimeScale();
 
         nowTime = 0;
         if (isLose)
@@ -149,10 +148,15 @@ public class GameManager : Singleton<GameManager>
         int randnum = Random.Range(0, StageValue);
         SceneManager.LoadScene(StageName[randnum]);
         string index = StageName[randnum];
-        if (index != "Cat")
+        if (index != "Cat" && index != "pigeon")
         {
             Debug.Log(index);
             slider.gameObject.SetActive(true);
+
+        }
+        else
+        {
+            slider.gameObject.SetActive(false);
         }
         StageName.RemoveAt(randnum);
         StageName.Add(index);
@@ -162,8 +166,8 @@ public class GameManager : Singleton<GameManager>
     {
         blackScreen.gameObject.SetActive(true);
         StageText.text = "GameOver...";
-        yield return new WaitForSeconds(2);
-
+        yield return new WaitForSecondsRealtime(2);
+        isLose = false;
         SceneManager.LoadScene("MainBoard");
     }
     public void GameStart()
@@ -172,5 +176,10 @@ public class GameManager : Singleton<GameManager>
         StageValue = StageName.Count;
         Life = 3;
         NextGame();
+    }
+
+    float LevelTimeScale()
+    {
+        return 1.0f + (0.3f * Level);
     }
 }

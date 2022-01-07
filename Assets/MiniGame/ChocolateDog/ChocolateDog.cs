@@ -9,12 +9,13 @@ public class ChocolateDog : MonoBehaviour
     public float BackSpeed;
     public bool GameOver;
 
+   // public SpriteRenderer renderer;
+   // public List<Sprite> dogdog;
+
     Rigidbody2D rigid;
-    Sprite sprite;
 
     private void Start()
     {
-        sprite = GetComponent<Sprite>();
         rigid = GetComponent<Rigidbody2D>();
     }
     void Update()
@@ -26,20 +27,21 @@ public class ChocolateDog : MonoBehaviour
         for (int i = 0; i < 100; i++)
         {
             transform.position += new Vector3(-BackSpeed * Time.deltaTime, 0, 0);
-            yield return new WaitForSeconds(0.005f);
+            yield return new WaitForSecondsRealtime(0.005f);
         }
     }
     private void OnBecameInvisible()
     {
         Debug.Log("¾Èº¸¿µ");
-        ChocolateManager.Instance.Onclear();
+        StartCoroutine(GameManager.Instance.ChangeScene(true, GameClear()));
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Chocolate" && GameOver == false)
         {
             Destroy(collision.gameObject);
-            GameManager.Instance.ChangeScene(false, Gameover());
+          //  renderer.sprite = dogdog[0];
+            StartCoroutine(GameManager.Instance.ChangeScene(false, Gameover()));
         }
     }
     IEnumerator Gameover()

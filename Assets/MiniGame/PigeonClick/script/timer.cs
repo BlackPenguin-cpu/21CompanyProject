@@ -35,7 +35,7 @@ public class timer : MonoBehaviour
                 road.SetActive(false);
                 redlight.SetActive(true);
                 on = false;
-                Invoke("greenlighton", 1f);
+                Invoke(nameof(greenlighton), 1f);
             }
         }
     }

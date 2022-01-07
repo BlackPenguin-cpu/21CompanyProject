@@ -11,17 +11,18 @@ public class Eik : MonoBehaviour
     GameObject Car;
     public Image image;
 
+    public SpriteRenderer renderer;
+    public List<Sprite> eik; 
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        renderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
         Move();
     }
 
@@ -32,10 +33,18 @@ public class Eik : MonoBehaviour
         if (transform.position.x >= 47)
         {
             transform.position += new Vector3(Time.deltaTime * spd, 0, 0);
+           
+            StartCoroutine(GameManager.Instance.ChangeScene(true, 2f));
         }
         else if (Input.GetMouseButton(0))
         {
             transform.position += new Vector3(Time.deltaTime * spd, 0, 0);
+           
+            renderer.sprite = eik[0];
+        }
+        else if (!Input.GetMouseButton(0))
+        {
+            renderer.sprite = eik[1];
         }
 
     }
@@ -43,11 +52,11 @@ public class Eik : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
 
-        Debug.Log("aaaaasssss");
         spd = 0;
 
         image.DOFade(1, 2f);
 
+        StartCoroutine(GameManager.Instance.ChangeScene(false, 2f));
     }
 
 }

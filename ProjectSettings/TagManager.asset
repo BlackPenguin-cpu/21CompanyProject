@@ -9,6 +9,7 @@ TagManager:
   - fire
   - Chocolate
   - Car
+  - PlasticBag
   layers:
   - Default
   - TransparentFX

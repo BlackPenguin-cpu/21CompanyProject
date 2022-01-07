@@ -1,16 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-
-public class MainBoard : MonoBehaviour
+public class PlasticBag : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -18,13 +15,4 @@ public class MainBoard : MonoBehaviour
     {
         
     }
-    public void GoGame()
-    {
-        
-        Debug.Log("»Æ¿Œ gogo");
-
-        GameManager.Instance.GameStart();
-    }
-
-
 }

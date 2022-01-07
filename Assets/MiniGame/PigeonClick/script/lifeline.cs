@@ -6,6 +6,7 @@ public class lifeline : MonoBehaviour
 {
     public GameObject level;
     public int life = 1;
+    bool check;
     void Start()
     {
         maxlife();
@@ -13,11 +14,7 @@ public class lifeline : MonoBehaviour
 
     void Update()
     {
-        if(life == 0)//게임 클리어
-        {
-            level.GetComponent<timer>().clear = false;
-            StartCoroutine(GameManager.Instance.ChangeScene(true, 2f));
-        }
+        GameClear();
     }
 
     void maxlife()
@@ -33,6 +30,19 @@ public class lifeline : MonoBehaviour
         else if (level.GetComponent<timer>().level == 3)
         {
             life = 10;
+        }
+    }
+
+    void GameClear()
+    {
+        if (life == 0)//게임 클리어
+        {
+            level.GetComponent<timer>().clear = false;
+            if (!check)
+            {
+                StartCoroutine(GameManager.Instance.ChangeScene(true, 2f));
+                check = true;
+            }
         }
     }
 

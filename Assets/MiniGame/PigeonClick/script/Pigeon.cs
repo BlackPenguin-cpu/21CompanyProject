@@ -16,22 +16,7 @@ public class Pigeon : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonUp(0))
-        {
-
-            Vector2 mousepos = MainCamera.ScreenToWorldPoint(Input.mousePosition);
-            if (Physics2D.Raycast(mousepos, Vector3.forward))
-            {
-                RaycastHit2D Hitobject = Physics2D.Raycast(mousepos, Vector3.forward);
-                if (Hitobject.collider.gameObject.tag == "Pigeon")
-                {
-                    Hitobject.collider.GetComponent<PigeonFly>().click = true;
-                    Hitobject.collider.GetComponent<PigeonFly>().random = true;
-                }
-            }
-
-
-        }
+        PigeonClick();
     }
 
     void PigeonSpawn()
@@ -65,6 +50,26 @@ public class Pigeon : MonoBehaviour
         else if (GetComponent<timer>().level == 3)
         {
             maxspawn = 10;
+        }
+    }
+
+    void PigeonClick()
+    {
+        if (Input.GetMouseButtonUp(0))
+        {
+
+            Vector2 mousepos = MainCamera.ScreenToWorldPoint(Input.mousePosition);
+            if (Physics2D.Raycast(mousepos, Vector3.forward))
+            {
+                RaycastHit2D Hitobject = Physics2D.Raycast(mousepos, Vector3.forward);
+                if (Hitobject.collider.gameObject.tag == "Pigeon")
+                {
+                    Hitobject.collider.GetComponent<PigeonFly>().click = true;
+                    Hitobject.collider.GetComponent<PigeonFly>().random = true;
+                }
+            }
+
+
         }
     }
 }
