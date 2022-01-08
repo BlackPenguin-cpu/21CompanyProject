@@ -7,8 +7,10 @@ public class Pigeon : MonoBehaviour
     private Camera MainCamera;
     public GameObject pigeon;
     public int maxspawn;
+
     void Start()
     {
+        
         LevelSpawn();
         PigeonSpawn();
         MainCamera = FindObjectOfType<Camera>();
@@ -57,7 +59,7 @@ public class Pigeon : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
-
+           
             Vector2 mousepos = MainCamera.ScreenToWorldPoint(Input.mousePosition);
             if (Physics2D.Raycast(mousepos, Vector3.forward))
             {

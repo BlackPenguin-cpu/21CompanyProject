@@ -10,12 +10,13 @@ public class ChocolateDog : MonoBehaviour
     public bool GameOver;
 
     public SpriteRenderer renderer;
-    public List<Sprite> dogdog;
+    public List<Sprite> DogSprites;
 
     Rigidbody2D rigid;
 
     private void Start()
     {
+        renderer = GetComponent<SpriteRenderer>();
         rigid = GetComponent<Rigidbody2D>();
     }
     void Update()
@@ -40,7 +41,7 @@ public class ChocolateDog : MonoBehaviour
         if (collision.tag == "Chocolate" && GameOver == false)
         {
             Destroy(collision.gameObject);
-            renderer.sprite = dogdog[1];
+            renderer.sprite = DogSprites[1];
             StartCoroutine(GameManager.Instance.ChangeScene(false, Gameover()));
         }
     }

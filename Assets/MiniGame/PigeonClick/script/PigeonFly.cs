@@ -7,9 +7,14 @@ public class PigeonFly : MonoBehaviour
     public bool click = false;
     public bool random = false;
     private float random_x = 0;
+
+    public SpriteRenderer renderer;
+    public List<Sprite> PigenSprites;
+
+
     void Start()
     {
-
+        renderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -39,6 +44,7 @@ public class PigeonFly : MonoBehaviour
     {
         if (click)
         {
+            renderer.sprite = PigenSprites[0];
             if (random_x < 0f)
             {
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));

@@ -8,13 +8,13 @@ public class ChocolateManager : Singleton<ChocolateManager>
     Vector3 positition;
 
     public SpriteRenderer renderer;
-    public List<Sprite> dogdog;
+    public List<Sprite> DogSprites;
 
     protected override void Awake(){}
     // Start is called before the first frame update
     void Start()
     {
-        
+        renderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -29,13 +29,12 @@ public class ChocolateManager : Singleton<ChocolateManager>
         {
             btnPressing = true;
             positition = Input.mousePosition;
-            //renderer.sprite = dogdog[2];
         }
         if (Input.GetMouseButtonUp(0))
         {
             if (positition.x - 2 > Input.mousePosition.x)
             {
-                //renderer.sprite = dogdog[2];
+                renderer.sprite = DogSprites[2];
                 StartCoroutine(FindObjectOfType<ChocolateDog>().OnDrag());
             }
         }

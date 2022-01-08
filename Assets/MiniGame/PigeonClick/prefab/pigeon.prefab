@@ -146,3 +146,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   click: 0
   random: 0
+  renderer: {fileID: 48729122301781019}
+  PigenSprites:
+  - {fileID: 21300000, guid: c8e41a6e8f2fd6e4cbed1da58b23c0bc, type: 3}
