@@ -409,6 +409,7 @@ MonoBehaviour:
   road: {fileID: 1264721372}
   deadline: {fileID: 2101563115}
   on: 1
+  clear: 1
 --- !u!4 &246433473
 Transform:
   m_ObjectHideFlags: 0
