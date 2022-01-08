@@ -10,9 +10,8 @@ public class HeliCopter : ObjectPool<Water>
     FireManager fireManager;
     //[SerializeField] GameObject Water;
     float Timer;
-    protected override void Start()
+    void Start()
     {
-        base.Start();
         fireManager = FindObjectOfType<FireManager>();
         rigid = GetComponent<Rigidbody2D>();
         cam = FindObjectOfType<Camera>();

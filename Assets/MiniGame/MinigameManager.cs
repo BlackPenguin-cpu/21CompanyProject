@@ -7,7 +7,6 @@ public abstract class MinigameManager : MonoBehaviour
 
     public float TimerTime;
 
-
-    protected abstract IEnumerator GameOver();
-    protected abstract IEnumerator GameClear();
+    public abstract IEnumerator GameOver();
+    public abstract IEnumerator GameClear();
 }

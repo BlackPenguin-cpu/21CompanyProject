@@ -4,19 +4,30 @@ using UnityEngine;
 
 public class SeaTurtleManager : MinigameManager
 {
-    bool isMouseDown;
-    Rigidbody2D plasticbag;
     Camera MainCamera;
-    public float power;
+    float Timer;
+    bool isGameEnd;
     void Start()
     {
         MainCamera = FindObjectOfType<Camera>();
-        plasticbag = null;
     }
 
     void Update()
     {
         MouseEvent();
+        ClearCheck();
+    }
+    void ClearCheck()
+    {
+        //if (Timer >= 15 && !isGameEnd)
+        //{
+        //    isGameEnd = true;
+        //    GameManager.Instance.ChangeScene(true, GameClear());
+        //}
+        //else if(!isGameEnd)
+        //{
+        //    Timer += Time.deltaTime;
+        //}
     }
     void MouseEvent()
     {
@@ -28,31 +39,21 @@ public class SeaTurtleManager : MinigameManager
                 RaycastHit2D Hitobject = Physics2D.Raycast(mousepos, Vector3.forward);
                 if (Hitobject.collider.gameObject.tag == "PlasticBag")
                 {
-                    Debug.Log("しいしいけ");
-                    isMouseDown = true;
-                    plasticbag = Hitobject.collider.gameObject.GetComponent<Rigidbody2D>();
+                    Hitobject.collider.gameObject.GetComponent<PlasticBag>()._isMouseDown = true;
                 }
             }
         }
-        if (isMouseDown)
-        {
-            Vector3 mousepos = MainCamera.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 pos = mousepos - plasticbag.transform.position ;
-            Vector3.Normalize(pos);
-            plasticbag.AddForce(pos * power * Time.deltaTime, ForceMode2D.Impulse);
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            isMouseDown = false;
-        }
+
     }
-    protected override IEnumerator GameClear()
+    public override IEnumerator GameClear()
     {
+        Debug.Log("SeaTurtle : GameClear");
         yield return new WaitForSeconds(1);
     }
 
-    protected override IEnumerator GameOver()
+    public override IEnumerator GameOver()
     {
+        Debug.Log("SeaTurtle : GameOver");
         yield return new WaitForSeconds(1);
     }
 

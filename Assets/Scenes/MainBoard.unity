@@ -558,6 +558,8 @@ MonoBehaviour:
   - MountainFire
   - pigeon
   - Chocolate
+  - SeaTurtle
+  - Elk
   Life: 3
   Stage: 0
   slider: {fileID: 647936706}

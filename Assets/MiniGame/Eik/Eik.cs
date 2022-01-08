@@ -10,9 +10,10 @@ public class Eik : MonoBehaviour
     public int spd;
     GameObject Car;
     public Image image;
+    public bool Check;
 
     public SpriteRenderer renderer;
-    public List<Sprite> eik; 
+    public List<Sprite> eik;
 
     // Start is called before the first frame update
     void Start()
@@ -33,13 +34,16 @@ public class Eik : MonoBehaviour
         if (transform.position.x >= 47)
         {
             transform.position += new Vector3(Time.deltaTime * spd, 0, 0);
-           
-            StartCoroutine(GameManager.Instance.ChangeScene(true, 2f));
+            if (!Check)
+            {
+                Check = true;
+                StartCoroutine(GameManager.Instance.ChangeScene(true, 2f));
+            }
         }
         else if (Input.GetMouseButton(0))
         {
             transform.position += new Vector3(Time.deltaTime * spd, 0, 0);
-           
+
             renderer.sprite = eik[0];
         }
         else if (!Input.GetMouseButton(0))
@@ -55,8 +59,11 @@ public class Eik : MonoBehaviour
         spd = 0;
 
         image.DOFade(1, 2f);
-
-        StartCoroutine(GameManager.Instance.ChangeScene(false, 2f));
+        if (Check)
+        {
+            Check = false;
+            StartCoroutine(GameManager.Instance.ChangeScene(false, 2f));
+        }
     }
 
 }

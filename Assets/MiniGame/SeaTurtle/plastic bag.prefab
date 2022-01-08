@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7375212572662326468}
   - component: {fileID: 7375212572662326467}
   - component: {fileID: 7375212572662326466}
+  - component: {fileID: 5330045332666399266}
   m_Layer: 0
   m_Name: plastic bag
   m_TagString: PlasticBag
@@ -121,3 +122,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &5330045332666399266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7375212572662326465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a4bc1575217584299ad2431775bd31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  power: 20
+  Speed: 5
