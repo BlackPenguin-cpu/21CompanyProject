@@ -7,9 +7,8 @@ public class FireManager : ObjectPool<Fire>
     [SerializeField] int FireCount;
     public int Life;
     public bool End;
-    protected override void Start()
+    void Start()
     {
-        base.Start();
         switch (GameManager.Instance.Level)
         {
             case 1:
