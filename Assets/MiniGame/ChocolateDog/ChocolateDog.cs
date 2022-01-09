@@ -30,6 +30,7 @@ public class ChocolateDog : MonoBehaviour
             transform.position += new Vector3(-BackSpeed * Time.deltaTime, 0, 0);
             yield return new WaitForSecondsRealtime(0.005f);
         }
+        renderer.sprite = DogSprites[0];
     }
     private void OnBecameInvisible()
     {

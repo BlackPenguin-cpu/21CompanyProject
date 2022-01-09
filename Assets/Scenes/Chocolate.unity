@@ -154,10 +154,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isNotSingle: 0
   renderer: {fileID: 576444688}
-  dogdog:
+  DogSprites:
   - {fileID: 21300000, guid: 4649fc4213f1b914582c8cb326e66eea, type: 3}
-  - {fileID: 21300000, guid: 5a4c21173a0acda459aa3495fe51f8dd, type: 3}
   - {fileID: 21300000, guid: 6deceec78f6badf429190d1d61a8ed15, type: 3}
+  - {fileID: 21300000, guid: 5a4c21173a0acda459aa3495fe51f8dd, type: 3}
 --- !u!4 &42915456
 Transform:
   m_ObjectHideFlags: 0
@@ -430,8 +430,9 @@ MonoBehaviour:
   BackSpeed: 10
   GameOver: 0
   renderer: {fileID: 576444688}
-  dogdog:
+  DogSprites:
   - {fileID: 21300000, guid: 4649fc4213f1b914582c8cb326e66eea, type: 3}
+  - {fileID: 21300000, guid: 6deceec78f6badf429190d1d61a8ed15, type: 3}
   - {fileID: 21300000, guid: 5a4c21173a0acda459aa3495fe51f8dd, type: 3}
 --- !u!50 &576444691
 Rigidbody2D:

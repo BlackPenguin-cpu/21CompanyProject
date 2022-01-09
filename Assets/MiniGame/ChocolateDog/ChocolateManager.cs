@@ -14,7 +14,7 @@ public class ChocolateManager : Singleton<ChocolateManager>
     // Start is called before the first frame update
     void Start()
     {
-        renderer = GetComponent<SpriteRenderer>();
+        
     }
 
     // Update is called once per frame
@@ -36,7 +36,10 @@ public class ChocolateManager : Singleton<ChocolateManager>
             {
                 renderer.sprite = DogSprites[2];
                 StartCoroutine(FindObjectOfType<ChocolateDog>().OnDrag());
+                
             }
+            
         }
+
     }
 }
