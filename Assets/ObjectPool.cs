@@ -15,9 +15,6 @@ public class ObjectPool<T> : Singleton<ObjectPool<T>> where T : MonoBehaviour
         obj.transform.SetParent(transform);
         trnDisable = obj.transform;
     }
-    protected virtual void Start()
-    {
-    }
 
     public T GetObj()
     {

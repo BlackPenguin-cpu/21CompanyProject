@@ -69,6 +69,10 @@ public class GameManager : Singleton<GameManager>
             {
                 StartCoroutine(ChangeScene(true, 0.01f));
             }
+            else if(SceneManager.GetActiveScene().name == "SeaTurtle")
+            {
+                StartCoroutine(ChangeScene(true, FindObjectOfType<SeaTurtleManager>().GameClear()));
+            }
         }
         if (Input.GetKeyDown(KeyCode.F1))
         {

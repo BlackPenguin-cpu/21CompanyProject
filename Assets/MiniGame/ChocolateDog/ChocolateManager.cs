@@ -7,8 +7,8 @@ public class ChocolateManager : Singleton<ChocolateManager>
     bool btnPressing;
     Vector3 positition;
 
-    //public SpriteRenderer renderer;
-   // public List<Sprite> dogdog;
+    public SpriteRenderer renderer;
+    public List<Sprite> DogSprites;
 
     protected override void Awake(){}
     // Start is called before the first frame update
@@ -34,9 +34,12 @@ public class ChocolateManager : Singleton<ChocolateManager>
         {
             if (positition.x - 2 > Input.mousePosition.x)
             {
-                //renderer.sprite = dogdog[2];
+                renderer.sprite = DogSprites[2];
                 StartCoroutine(FindObjectOfType<ChocolateDog>().OnDrag());
+                
             }
+            
         }
+
     }
 }
