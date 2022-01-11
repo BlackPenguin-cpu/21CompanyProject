@@ -5,6 +5,7 @@ using UnityEngine;
 public class FireManager : ObjectPool<Fire>
 {
     [SerializeField] int FireCount;
+    [SerializeField] GameObject Kanngaroo;
     public int Life;
     public bool End;
     void Start()
@@ -42,8 +43,17 @@ public class FireManager : ObjectPool<Fire>
     {
         if (Life <= 0 && End == false)
         {
-            StartCoroutine(GameManager.Instance.ChangeScene(true, 0.1f));
+            StartCoroutine(GameManager.Instance.ChangeScene(true, GameClear()));
             End = true;
+        }
+    }
+
+    IEnumerator GameClear()
+    {
+        while(Kanngaroo.transform.position.x > 0)
+        {
+            Kanngaroo.transform.position += new Vector3(Time.deltaTime, 0, 0);
+            yield return null;
         }
     }
 }
