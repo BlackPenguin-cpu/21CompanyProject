@@ -11,6 +11,7 @@ TagManager:
   - Car
   - PlasticBag
   - Turtle
+  - Human
   layers:
   - Default
   - TransparentFX
