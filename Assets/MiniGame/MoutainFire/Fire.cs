@@ -29,7 +29,7 @@ public class Fire : MonoBehaviour
             if (value == 0)
             {
                 fireManager.Life--;
-                FireManager.Instance.ReturnObj(gameObject.GetComponent<Fire>());
+                fireManager.ReturnObj(gameObject.GetComponent<Fire>());
             }
             Hp = value;
         }

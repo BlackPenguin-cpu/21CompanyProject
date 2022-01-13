@@ -29,7 +29,6 @@ public class ObjectPool<T> : Singleton<ObjectPool<T>> where T : MonoBehaviour
         {
             @return = Instantiate(originManagedObj);
         }
-
         return @return;
     }
 

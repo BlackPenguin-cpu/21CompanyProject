@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class ChocolateDog : MonoBehaviour
+public class ChocolateDog : MinigameManager
 {
     public float Speed;
     public float BackSpeed;
-    public bool GameOver;
+    public bool isOver;
 
     public SpriteRenderer renderer;
     public List<Sprite> DogSprites;
@@ -21,7 +21,7 @@ public class ChocolateDog : MonoBehaviour
     }
     void Update()
     {
-        if (!GameOver) transform.position += new Vector3(Speed * Time.deltaTime, 0, 0);
+        if (!isOver) transform.position += new Vector3(Speed * Time.deltaTime, 0, 0);
     }
     public IEnumerator OnDrag()
     {
@@ -39,22 +39,22 @@ public class ChocolateDog : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Chocolate" && GameOver == false)
+        if (collision.tag == "Chocolate" && isOver == false)
         {
             Destroy(collision.gameObject);
             renderer.sprite = DogSprites[1];
-            StartCoroutine(GameManager.Instance.ChangeScene(false, Gameover()));
+            StartCoroutine(GameManager.Instance.ChangeScene(false, GameOver()));
         }
     }
-    IEnumerator Gameover()
+    public override IEnumerator GameOver()
     {
-        GameOver = true;
+        isOver = true;
         rigid.AddForce(new Vector2(2, 0), ForceMode2D.Impulse);
         transform.DOLocalRotateQuaternion(Quaternion.Euler(0, 0, -110), 1.0f);
         yield return new WaitForSeconds(2);
     }
 
-    public IEnumerator GameClear(){
+    public override IEnumerator GameClear(){
         transform.DOMoveX(-17, 2);
         yield return new WaitForSeconds(2);
     }

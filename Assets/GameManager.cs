@@ -179,6 +179,7 @@ public class GameManager : Singleton<GameManager>
         Stop = false;
         StageValue = StageName.Count;
         Life = 3;
+        Level = 0;
         NextGame();
     }
 
