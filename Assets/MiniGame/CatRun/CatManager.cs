@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatManager : MonoBehaviour
+public class CatManager : MinigameManager
 {
     public float Cooldown;
     float nowCooltime;
@@ -10,6 +10,18 @@ public class CatManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        switch (GameManager.Instance.Level)
+        {
+            case 1:
+                
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                break;
+        }
         nowCooltime = 10;
     }
 
