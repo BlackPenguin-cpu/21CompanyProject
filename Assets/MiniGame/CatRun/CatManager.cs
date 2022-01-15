@@ -37,4 +37,14 @@ public class CatManager : MinigameManager
         }
         nowCooltime += Time.deltaTime;
     }
+
+    public override IEnumerator GameOver()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override IEnumerator GameClear()
+    {
+        throw new System.NotImplementedException();
+    }
 }

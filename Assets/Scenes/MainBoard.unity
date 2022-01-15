@@ -328,6 +328,7 @@ MonoBehaviour:
   blackScreen: {fileID: 225658652}
   StageText: {fileID: 1145622682}
   ScoreText: {fileID: 2087475645}
+  material: {fileID: 2100000, guid: 946d112ab9effac4c9f605c9961ac237, type: 2}
 --- !u!4 &317458921
 Transform:
   m_ObjectHideFlags: 0
@@ -819,7 +820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 946d112ab9effac4c9f605c9961ac237, type: 2}
   m_Color: {r: 0.745283, g: 0.116011046, b: 0.116011046, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
