@@ -2,22 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChocolateManager : Singleton<ChocolateManager>
+public class ChocolateManager : MinigameManager
 {
     bool btnPressing;
     Vector3 positition;
 
     public SpriteRenderer renderer;
     public List<Sprite> DogSprites;
-
-    protected override void Awake(){}
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        switch (GameManager.Instance.Level)
+        {
+            case 1:
+                TimerTime = 10;
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         MouseDragDect();
@@ -41,5 +46,15 @@ public class ChocolateManager : Singleton<ChocolateManager>
             
         }
 
+    }
+
+    public override IEnumerator GameOver()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override IEnumerator GameClear()
+    {
+        throw new System.NotImplementedException();
     }
 }

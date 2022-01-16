@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using DG.Tweening;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -45,6 +46,14 @@ public class GameManager : Singleton<GameManager>
     public Image blackScreen;
     public TextMeshProUGUI StageText;
     public TextMeshProUGUI ScoreText;
+    public Image image;
+    Tween tween;
+
+    private void Start()
+    {
+        //TimerColor();
+        image.DOColor(Color.green, 1);
+    }
 
     // Start is called before the first frame update
     protected override void Awake()
@@ -79,6 +88,8 @@ public class GameManager : Singleton<GameManager>
             Stop = false;
         }
         if (!Stop) nowTime += Time.deltaTime;
+
+        //TimerColor2();
     }
     public IEnumerator ChangeScene(bool isWin, float Delay)
     {
@@ -97,6 +108,8 @@ public class GameManager : Singleton<GameManager>
 
     private IEnumerator _ChangeScene(bool isWin)
     {
+        tween.Kill();
+        image.color = new Color(0, 1, 0); 
         int Scorenow = Score;
         Time.timeScale = 0;
         if (isWin)
@@ -165,6 +178,8 @@ public class GameManager : Singleton<GameManager>
         StageName.RemoveAt(randnum);
         StageName.Add(index);
         StageValue--;
+
+        tween = image.DOColor(Color.red, 7);
     }
     IEnumerator GameOver()
     {
@@ -187,4 +202,16 @@ public class GameManager : Singleton<GameManager>
     {
         return 1.0f + (0.3f * Level);
     }
+
+
+    /*
+    void TimerColor()
+    {
+        slider.image.color = new Color(0, 1, 0, 1);
+    }
+
+    void TimerColor2()
+    {
+        slider.image.color = new Color(0.0000001f * Time.deltaTime, 0, 0, 1);
+    }*/
 }
