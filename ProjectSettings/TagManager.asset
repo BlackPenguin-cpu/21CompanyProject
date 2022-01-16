@@ -12,6 +12,7 @@ TagManager:
   - PlasticBag
   - Turtle
   - Human
+  - Clear
   layers:
   - Default
   - TransparentFX

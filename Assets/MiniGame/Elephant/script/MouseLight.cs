@@ -5,6 +5,7 @@ using UnityEngine;
 public class MouseLight : MonoBehaviour
 {
     public Camera CAM;
+    public GameObject cube;
 
     void Start()
     {
@@ -13,7 +14,7 @@ public class MouseLight : MonoBehaviour
 
     void Update()
     {
-        Vector3 mouse = CAM.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10 ));
+        Vector3 mouse = CAM.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
 
         transform.position = mouse;
 
@@ -22,8 +23,9 @@ public class MouseLight : MonoBehaviour
         {
             if (item.collider.gameObject.tag == "Human")
             {
-                Debug.Log("사람이다!");
+                item.collider.gameObject.transform.Translate(new Vector3(0, 0, 8*Time.deltaTime));
             }
         }
     }
+
 }
