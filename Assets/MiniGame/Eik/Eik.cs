@@ -5,7 +5,7 @@ using DG.Tweening;
 using UnityEngine.UI;
 
 
-public class Eik : MonoBehaviour
+public class Eik : MinigameManager
 {
     public int spd;
     GameObject Car;
@@ -18,6 +18,17 @@ public class Eik : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        switch (GameManager.Instance.Level)
+        {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                break;
+        }
         renderer = GetComponent<SpriteRenderer>();
     }
 
@@ -37,7 +48,7 @@ public class Eik : MonoBehaviour
             if (!Check)
             {
                 Check = true;
-                StartCoroutine(GameManager.Instance.ChangeScene(true, 2f));
+                StartCoroutine(GameManager.Instance.ChangeScene(true, GameClear()));
             }
         }
         else if (Input.GetMouseButton(0))
@@ -62,8 +73,17 @@ public class Eik : MonoBehaviour
         if (Check)
         {
             Check = false;
-            StartCoroutine(GameManager.Instance.ChangeScene(false, 2f));
+            StartCoroutine(GameManager.Instance.ChangeScene(false, GameOver()));
         }
     }
 
+    public override IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(2);
+    }
+
+    public override IEnumerator GameClear()
+    {
+        yield return new WaitForSeconds(2);
+    }
 }

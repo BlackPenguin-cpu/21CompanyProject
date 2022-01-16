@@ -50,8 +50,7 @@ public class CatControlable : MonoBehaviour
         JumpCount = 1;
         if (collision.gameObject.tag.Contains("IronFan"))
         {
-        StartCoroutine(GameManager.Instance.ChangeScene(false, GameOver()));
-            GameManager.Instance.ChangeScene(true,GameOver());
+            StartCoroutine(GameManager.Instance.ChangeScene(false, GameOver()));
         }
     }
 

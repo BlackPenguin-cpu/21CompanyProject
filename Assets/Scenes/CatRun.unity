@@ -218,6 +218,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62414d9959940444bb7f5e3c8fdeafd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimerTime: 0
+  StartString: "\uC810\uD504\uD574\uB77C!"
+  AnimalNews: "\uC18C\uB3D9\uBB3C\uC774 \uD558\uC218\uAD6C\uC5D0 \uBE60\uC9C0\uB294
+    \uC0AC\uAC74\uC740 \uB9E4\uB144 \uB04A\uC774\uC9C0 \uC54A\uB294\uB2E4 \uD569\uB2C8\uB2E4 "
   Cooldown: 0
   IronFan: {fileID: 7382147471452362397, guid: 8a85fa36cbe0f6a43b644c355ca0bda3, type: 3}
 --- !u!4 &598442865
