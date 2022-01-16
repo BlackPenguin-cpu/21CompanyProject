@@ -46,12 +46,13 @@ public class GameManager : Singleton<GameManager>
     public Image blackScreen;
     public TextMeshProUGUI StageText;
     public TextMeshProUGUI ScoreText;
-    public Material material;
+    public Image image;
+    Tween tween;
 
     private void Start()
     {
         //TimerColor();
-        material.DOColor(Color.green, 1);
+        image.DOColor(Color.green, 1);
     }
 
     // Start is called before the first frame update
@@ -107,6 +108,8 @@ public class GameManager : Singleton<GameManager>
 
     private IEnumerator _ChangeScene(bool isWin)
     {
+        tween.Kill();
+        image.color = new Color(0, 1, 0); 
         int Scorenow = Score;
         Time.timeScale = 0;
         if (isWin)
@@ -175,6 +178,8 @@ public class GameManager : Singleton<GameManager>
         StageName.RemoveAt(randnum);
         StageName.Add(index);
         StageValue--;
+
+        tween = image.DOColor(Color.red, 7);
     }
     IEnumerator GameOver()
     {
