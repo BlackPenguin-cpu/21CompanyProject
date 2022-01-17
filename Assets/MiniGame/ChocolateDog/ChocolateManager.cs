@@ -9,6 +9,8 @@ public class ChocolateManager : MinigameManager
 
     public SpriteRenderer renderer;
     public List<Sprite> DogSprites;
+
+    public bool isGameOver;
     private void Start()
     {
         switch (GameManager.Instance.Level)
@@ -17,8 +19,10 @@ public class ChocolateManager : MinigameManager
                 TimerTime = 10;
                 break;
             case 2:
+                TimerTime = 8;
                 break;
-            case 3:
+            default:
+                TimerTime = 5;
                 break;
         }
     }
@@ -30,22 +34,25 @@ public class ChocolateManager : MinigameManager
 
     private void MouseDragDect()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!isGameOver)
         {
-            btnPressing = true;
-            positition = Input.mousePosition;
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            if (positition.x - 2 > Input.mousePosition.x)
-            {
-                renderer.sprite = DogSprites[2];
-                StartCoroutine(FindObjectOfType<ChocolateDog>().OnDrag());
-                
-            }
-            
-        }
 
+            if (Input.GetMouseButtonDown(0))
+            {
+                btnPressing = true;
+                positition = Input.mousePosition;
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                if (positition.x - 2 > Input.mousePosition.x)
+                {
+                    renderer.sprite = DogSprites[2];
+                    StartCoroutine(FindObjectOfType<ChocolateDog>().OnDrag());
+
+                }
+
+            }
+        }
     }
 
     public override IEnumerator GameOver()

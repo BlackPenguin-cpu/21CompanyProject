@@ -16,10 +16,10 @@ public class FireManager : ObjectPool<Fire>
                 FireCount = 2;
                 break;
             case 2:
-                FireCount = 4;
+                FireCount = 3;
                 break;
-            case 3:
-                FireCount = 6;
+            default:
+                FireCount = 4;
                 break;
         }
         for (int i = 0; i < FireCount; i++)

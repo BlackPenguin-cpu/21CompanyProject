@@ -15,7 +15,7 @@ public class GameManager : Singleton<GameManager>
     public int Score;
     public int Combo;
     public int Level;
-    // ½¬¿ò º¸Åë ¾î·Á¿ò
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
 
     [SerializeField] bool isLose;
     [SerializeField] private List<string> StageName;
@@ -46,13 +46,13 @@ public class GameManager : Singleton<GameManager>
     public Image blackScreen;
     public TextMeshProUGUI StageText;
     public TextMeshProUGUI ScoreText;
-    public Image FillImage;
-    Tween tween;
-
+    public Image SliderFillColor;
+    private MinigameManager minigame;
     private void Start()
     {
     }
 
+    // Start is called before the first frame update
     protected override void Awake()
     {
         base.Awake();
@@ -62,8 +62,8 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
-        TimerBarColorChange(nowTime / Timer);
-        if (nowTime < 0)
+        ChangeSliderColor(nowTime / Timer);
+        if (nowTime > Timer)
         {
             nowTime = 0;
             slider.gameObject.SetActive(false);
@@ -78,6 +78,11 @@ public class GameManager : Singleton<GameManager>
             else if (SceneManager.GetActiveScene().name == "SeaTurtle")
             {
                 StartCoroutine(ChangeScene(true, FindObjectOfType<SeaTurtleManager>().GameClear()));
+            }
+            else if(SceneManager.GetActiveScene().name == "Chocolate")
+            {
+                StartCoroutine(ChangeScene(false, 3));
+                FindObjectOfType<ChocolateManager>().isGameOver = true;
             }
         }
         if (Input.GetKeyDown(KeyCode.F1))
@@ -105,7 +110,6 @@ public class GameManager : Singleton<GameManager>
 
     private IEnumerator _ChangeScene(bool isWin)
     {
-        tween.Kill();
         int Scorenow = Score;
         Time.timeScale = 0;
         if (isWin)
@@ -158,24 +162,26 @@ public class GameManager : Singleton<GameManager>
         
         Stop = false;
 
-        //Àü¿¡ Çß´ø °ÔÀÓÀº ¾È³ª¿À°Ô ¼öÁ¤ ÇÊ¿ä   (½ºÅÃÇü ·£´ý »ç¿ë ¿ä±¸)
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ß´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½È³ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½   (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ä±¸)
         int randnum = Random.Range(0, StageValue);
         SceneManager.LoadScene(StageName[randnum]);
         string index = StageName[randnum];
-        if (index != "Cat" && index != "pigeon")
-        {
-            Debug.Log(index);
-            slider.gameObject.SetActive(true);
+        //if (index != "Cat" && index != "pigeon")
+        //{
+        //    Debug.Log(index);
+        //    slider.gameObject.SetActive(true);
 
-        }
-        else
-        {
-            slider.gameObject.SetActive(false);
-        }
+        //}
+        //else
+        //{
+        //    slider.gameObject.SetActive(false);
+        //}
+        slider.gameObject.SetActive(true);
         StageName.RemoveAt(randnum);
         StageName.Add(index);
+        minigame = FindObjectOfType<MinigameManager>();
+        Timer = minigame.TimerTime;
         StageValue--;
-
     }
     IEnumerator GameOver()
     {
@@ -190,7 +196,7 @@ public class GameManager : Singleton<GameManager>
         Stop = false;
         StageValue = StageName.Count;
         Life = 3;
-        Level = 0;
+        Level = 1;
         NextGame();
     }
 
@@ -199,9 +205,9 @@ public class GameManager : Singleton<GameManager>
         return 1.0f + (0.3f * Level);
     }
 
-    void TimerBarColorChange(float value)
+    void ChangeSliderColor(float value)
     {
         slider.value = value;
-        FillImage.color = new Color(0 + value, 1 - value, 0);
+        SliderFillColor.color = new Color(value, 1 - value, 0);
     }
 }

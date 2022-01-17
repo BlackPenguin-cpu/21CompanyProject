@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class timer : MonoBehaviour
 {
     public GameObject UI;
-    public int level = 1;
+    public int level;
     public float sec = 5;
     public GameObject redlight;
     public GameObject greenlight;
@@ -16,6 +16,7 @@ public class timer : MonoBehaviour
     public bool clear = true;
     void Start()
     {
+        level = GameManager.Instance.Level;
         LevelTime();
         UI.GetComponent<Slider>().maxValue = sec;
     }

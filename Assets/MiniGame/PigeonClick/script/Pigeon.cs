@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pigeon : MonoBehaviour
+public class Pigeon : MinigameManager   
 {
     private Camera MainCamera;
     public GameObject pigeon;
@@ -10,7 +10,6 @@ public class Pigeon : MonoBehaviour
 
     void Start()
     {
-        
         LevelSpawn();
         PigeonSpawn();
         MainCamera = FindObjectOfType<Camera>();
@@ -49,7 +48,7 @@ public class Pigeon : MonoBehaviour
         {
             maxspawn = 7;
         }
-        else if (GetComponent<timer>().level == 3)
+        else if (GetComponent<timer>().level >= 3)
         {
             maxspawn = 10;
         }
@@ -73,5 +72,15 @@ public class Pigeon : MonoBehaviour
 
 
         }
+    }
+
+    public override IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(1);
+    }
+
+    public override IEnumerator GameClear()
+    {
+        yield return new WaitForSeconds(1);
     }
 }

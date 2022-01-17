@@ -11,16 +11,13 @@ public class MountainFireManager : MinigameManager
         switch (GameManager.Instance.Level)
         {
             case 1:
-                TimerTime = 10;
+                TimerTime = 8;
                 break;
             case 2:
-                TimerTime = 11;
-                break;
-            case 3:
-                TimerTime = 12;
+                TimerTime = 8;
                 break;
             default:
-                TimerTime = 13;
+                TimerTime = 8;
                 break;
         }
     }

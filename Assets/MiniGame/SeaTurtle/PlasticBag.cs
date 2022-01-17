@@ -8,7 +8,7 @@ public class PlasticBag : MonoBehaviour
     [SerializeField] float power;
     public float Speed;
     Rigidbody2D rigid;
-    bool Gameover;
+    bool GameEnd;
 
     private Vector2 Target = new Vector2(0,3.2f);
 
@@ -18,7 +18,7 @@ public class PlasticBag : MonoBehaviour
         get { return isMouseDown; }
         set 
         {
-            if (Gameover) return;    
+            if (GameEnd) return;    
             isMouseDown = value; 
         }
     }
@@ -60,7 +60,7 @@ public class PlasticBag : MonoBehaviour
         if(collision.tag == "Turtle")
         {
             Debug.Log("이게 외 안된데?");
-            Gameover = true;
+            GameEnd = true;
             isMouseDown = false;
             StartCoroutine(GameManager.Instance.ChangeScene(false, FindObjectOfType<SeaTurtleManager>().GameOver()));
         }
