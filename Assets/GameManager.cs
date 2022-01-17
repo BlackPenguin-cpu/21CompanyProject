@@ -46,13 +46,10 @@ public class GameManager : Singleton<GameManager>
     public Image blackScreen;
     public TextMeshProUGUI StageText;
     public TextMeshProUGUI ScoreText;
-    public Image image;
-    Tween tween;
-
+    public Image SliderFillColor;
+    private MinigameManager minigame;
     private void Start()
     {
-        //TimerColor();
-        image.DOColor(Color.green, 1);
     }
 
     // Start is called before the first frame update
@@ -65,7 +62,7 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
-        slider.value = nowTime / Timer;
+        ChangeSliderColor(nowTime / Timer);
         if (nowTime > Timer)
         {
             nowTime = 0;
@@ -74,13 +71,18 @@ public class GameManager : Singleton<GameManager>
             {
                 StartCoroutine(ChangeScene(false, FindObjectOfType<FireManager>().Gameoverr()));
             }
-            else if(SceneManager.GetActiveScene().name == "CatRun")
+            else if (SceneManager.GetActiveScene().name == "CatRun")
             {
                 StartCoroutine(ChangeScene(true, 0.01f));
             }
-            else if(SceneManager.GetActiveScene().name == "SeaTurtle")
+            else if (SceneManager.GetActiveScene().name == "SeaTurtle")
             {
                 StartCoroutine(ChangeScene(true, FindObjectOfType<SeaTurtleManager>().GameClear()));
+            }
+            else if(SceneManager.GetActiveScene().name == "Chocolate")
+            {
+                StartCoroutine(ChangeScene(false, 3));
+                FindObjectOfType<ChocolateManager>().isGameOver = true;
             }
         }
         if (Input.GetKeyDown(KeyCode.F1))
@@ -108,8 +110,6 @@ public class GameManager : Singleton<GameManager>
 
     private IEnumerator _ChangeScene(bool isWin)
     {
-        tween.Kill();
-        image.color = new Color(0, 1, 0); 
         int Scorenow = Score;
         Time.timeScale = 0;
         if (isWin)
@@ -117,7 +117,7 @@ public class GameManager : Singleton<GameManager>
             blackScreen.gameObject.SetActive(true);
             StageText.text = "GREAT!!! - Life: " + Life;
             Combo++;
-            Score += 104 + (Random.Range(19,22) * Combo);
+            Score += 104 + (Random.Range(19, 22) * Combo);
             while (Scorenow != Score)
             {
                 Scorenow++;
@@ -129,7 +129,7 @@ public class GameManager : Singleton<GameManager>
         {
             blackScreen.gameObject.SetActive(true);
             _Life--;
-            StageText.text = ":(  - Life: " + Life ;
+            StageText.text = ":(  - Life: " + Life;
             Combo = 0;
             ScoreText.text = "Combo: " + Combo + " Score: " + Score.ToString();
         }
@@ -165,21 +165,22 @@ public class GameManager : Singleton<GameManager>
         int randnum = Random.Range(0, StageValue);
         SceneManager.LoadScene(StageName[randnum]);
         string index = StageName[randnum];
-        if (index != "Cat" && index != "pigeon")
-        {
-            Debug.Log(index);
-            slider.gameObject.SetActive(true);
+        //if (index != "Cat" && index != "pigeon")
+        //{
+        //    Debug.Log(index);
+        //    slider.gameObject.SetActive(true);
 
-        }
-        else
-        {
-            slider.gameObject.SetActive(false);
-        }
+        //}
+        //else
+        //{
+        //    slider.gameObject.SetActive(false);
+        //}
+        slider.gameObject.SetActive(true);
         StageName.RemoveAt(randnum);
         StageName.Add(index);
+        minigame = FindObjectOfType<MinigameManager>();
+        Timer = minigame.TimerTime;
         StageValue--;
-
-        tween = image.DOColor(Color.red, 7);
     }
     IEnumerator GameOver()
     {
@@ -194,7 +195,7 @@ public class GameManager : Singleton<GameManager>
         Stop = false;
         StageValue = StageName.Count;
         Life = 3;
-        Level = 0;
+        Level = 1;
         NextGame();
     }
 
@@ -203,15 +204,9 @@ public class GameManager : Singleton<GameManager>
         return 1.0f + (0.3f * Level);
     }
 
-
-    /*
-    void TimerColor()
+    void ChangeSliderColor(float value)
     {
-        slider.image.color = new Color(0, 1, 0, 1);
+        slider.value = value;
+        SliderFillColor.color = new Color(value, 1 - value, 0);
     }
-
-    void TimerColor2()
-    {
-        slider.image.color = new Color(0.0000001f * Time.deltaTime, 0, 0, 1);
-    }*/
 }

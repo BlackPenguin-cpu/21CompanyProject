@@ -238,8 +238,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aaf6635f98a49c43ba69aa59829df12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spd: 4
+  TimerTime: 0
+  StartString: " \uAC74\uB108\uB77C!"
+  AnimalNews: "\uC9C0\uB09C 5\uB144\uAC04 \uB85C\uB4DC\uD0AC\uB85C \uACE0\uB77C\uB2C8\uB9CC
+    42748\uB9C8\uB9AC \uC0AC\uB9DD \uD588\uB2E4\uACE0 \uD569\uB2C8\uB2E4"
+  spd: 8
   image: {fileID: 1881606108}
+  Check: 0
   renderer: {fileID: 195842373}
   eik:
   - {fileID: 21300000, guid: 024fbb808392cbf49a262f13a230aec6, type: 3}

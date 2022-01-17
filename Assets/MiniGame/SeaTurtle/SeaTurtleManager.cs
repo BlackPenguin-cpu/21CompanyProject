@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq;
+using DG.Tweening;
+    
 public class SeaTurtleManager : MinigameManager
 {
     Camera MainCamera;
     float Timer;
     bool isGameEnd;
+
     void Start()
     {
         MainCamera = FindObjectOfType<Camera>();
@@ -16,6 +19,7 @@ public class SeaTurtleManager : MinigameManager
     {
         MouseEvent();
         ClearCheck();
+
     }
     void ClearCheck()
     {
@@ -45,16 +49,25 @@ public class SeaTurtleManager : MinigameManager
         }
 
     }
+
     public override IEnumerator GameClear()
     {
-        Debug.Log("SeaTurtle : GameClear");
         yield return new WaitForSeconds(1);
+        PlasticBag[] plasticBag = FindObjectsOfType<PlasticBag>();
+
+        plasticBag.ToList().ForEach(x => PlasticBagManager.Instance.ReturnObj(x));
+        //foreach (var x in plasticBag) PlasticBagManager.Instance.ReturnObj(x);
+        transform.DOMoveX(-8,3);
+        yield return new WaitForSeconds(2);
     }
 
     public override IEnumerator GameOver()
     {
-        Debug.Log("SeaTurtle : GameOver");
-        yield return new WaitForSeconds(1);
+        Rigidbody2D rigid = GetComponent<Rigidbody2D>();
+        rigid.isKinematic = false;
+        rigid.gravityScale = 0.4f;
+        rigid.AddTorque(-1, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(2);
     }
 
 }

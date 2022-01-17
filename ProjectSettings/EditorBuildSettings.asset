@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SeaTurtle.unity
     guid: a019465a002daf642969568a73e15d99
+  - enabled: 1
+    path: Assets/Scenes/Elk.unity
+    guid: 2e046a61ab8a4dc43a72b293d009d160
   m_configObjects: {}
