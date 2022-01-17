@@ -63,7 +63,7 @@ public class GameManager : Singleton<GameManager>
     void Update()
     {
         TimerBarColorChange(nowTime / Timer);
-        if (nowTime > Timer)
+        if (nowTime < 0)
         {
             nowTime = 0;
             slider.gameObject.SetActive(false);
@@ -84,7 +84,7 @@ public class GameManager : Singleton<GameManager>
         {
             Stop = false;
         }
-        if (!Stop) nowTime += Time.deltaTime;
+        if (!Stop) nowTime -= Time.deltaTime;
 
         //TimerColor2();
     }
@@ -155,6 +155,7 @@ public class GameManager : Singleton<GameManager>
             StageValue = StageName.Count;
             Level++;
         }
+        
         Stop = false;
 
         //전에 했던 게임은 안나오게 수정 필요   (스택형 랜덤 사용 요구)
