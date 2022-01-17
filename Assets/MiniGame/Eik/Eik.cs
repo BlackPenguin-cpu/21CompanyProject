@@ -21,12 +21,13 @@ public class Eik : MinigameManager
         switch (GameManager.Instance.Level)
         {
             case 1:
+                TimerTime = 20;
                 break;
             case 2:
-                break;
-            case 3:
+                TimerTime = 20;
                 break;
             default:
+                TimerTime = 20;
                 break;
         }
         renderer = GetComponent<SpriteRenderer>();

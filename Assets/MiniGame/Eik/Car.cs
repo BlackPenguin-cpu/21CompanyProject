@@ -12,18 +12,7 @@ public class Car : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        switch (GameManager.Instance.Level)
-        {
-            case 1:
 
-                break;
-            case 2:
-                break;
-            default:
-                break;
-        }
-        Tween a;
-        a.Kill();
        //transform.DOMoveY(-15, 13).SetLoops(-1, LoopType.Restart);
     }
 
