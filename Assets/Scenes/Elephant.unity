@@ -608,6 +608,10 @@ PrefabInstance:
       propertyPath: BigLight
       value: 
       objectReference: {fileID: 140822169}
+    - target: {fileID: 3312710048867320365, guid: 3e6aec54d157fba4abef40459345d35d, type: 3}
+      propertyPath: HumanAlpha
+      value: 
+      objectReference: {fileID: 2100000, guid: 9802132bd4801464b901b70c99e922a5, type: 2}
     - target: {fileID: 3312710048867320366, guid: 3e6aec54d157fba4abef40459345d35d, type: 3}
       propertyPath: m_Name
       value: Spot Light
