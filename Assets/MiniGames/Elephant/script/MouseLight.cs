@@ -15,6 +15,7 @@ public class MouseLight : MonoBehaviour
     public GameObject FunElephant;
     public float LimitSecond = 12;
     public bool TimerStop = false;
+    private bool isEnd = true;
     void Start()
     {
         MeshRenderer mr;
@@ -33,11 +34,13 @@ public class MouseLight : MonoBehaviour
         if (isclick)
         {
             GameClear();
+            isclick = false;
         }
 
-        if (LimitSecond <= 0)
+        if (LimitSecond <= 0 && isEnd)
         {
             GameOver();
+            isEnd = false;
         }
     }
 
