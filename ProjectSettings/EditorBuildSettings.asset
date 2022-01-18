@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Elk.unity
     guid: 2e046a61ab8a4dc43a72b293d009d160
+  - enabled: 1
+    path: Assets/Scenes/Elephant.unity
+    guid: 1663dec274ff41940a4846caffa55d7a
   m_configObjects: {}

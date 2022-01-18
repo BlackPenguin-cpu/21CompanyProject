@@ -15,7 +15,6 @@ public class StartDash : MonoBehaviour
 
     void Update()
     {
-
     }
 
     void HunterSpawn()
@@ -24,4 +23,7 @@ public class StartDash : MonoBehaviour
         float Random_y = Random.Range(-7, 7f);
         Hunter.transform.position = new Vector3(Random_x, Random_y, 0f);
     }
+
+    
+
 }
