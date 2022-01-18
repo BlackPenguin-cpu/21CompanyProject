@@ -18,6 +18,18 @@ public class ChocolateDog : MinigameManager
     {
         renderer = GetComponent<SpriteRenderer>();
         rigid = GetComponent<Rigidbody2D>();
+        switch (GameManager.Instance.Level)
+        {
+            case 1:
+                TimerTime = 8;
+                break;
+            case 2:
+                TimerTime = 6;
+                break;
+            default:
+                TimerTime = 5;
+                break;
+        }
     }
     void Update()
     {

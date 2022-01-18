@@ -10,6 +10,19 @@ public class Pigeon : MinigameManager
 
     void Start()
     {
+        switch (GameManager.Instance.Level)
+        {
+            case 1:
+                TimerTime = 10;
+                break;
+            case 2:
+                TimerTime = 10;
+                break;
+            default:
+                TimerTime = 10;
+                break;
+
+        }
         LevelSpawn();
         PigeonSpawn();
         MainCamera = FindObjectOfType<Camera>();

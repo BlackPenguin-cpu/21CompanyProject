@@ -63,8 +63,9 @@ public class GameManager : Singleton<GameManager>
     void Update()
     {
         ChangeSliderColor(nowTime / Timer);
-        if (nowTime > Timer)
+        if (nowTime < 0)
         {
+            Stop = true;
             nowTime = 0;
             slider.gameObject.SetActive(false);
             if (SceneManager.GetActiveScene().name == "MountainFire")
@@ -79,7 +80,7 @@ public class GameManager : Singleton<GameManager>
             {
                 StartCoroutine(ChangeScene(true, FindObjectOfType<SeaTurtleManager>().GameClear()));
             }
-            else if(SceneManager.GetActiveScene().name == "Chocolate")
+            else if (SceneManager.GetActiveScene().name == "Chocolate")
             {
                 StartCoroutine(ChangeScene(false, 3));
                 FindObjectOfType<ChocolateManager>().isGameOver = true;
@@ -148,7 +149,6 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
-            Stop = false;
             NextGame();
         }
     }
@@ -159,28 +159,15 @@ public class GameManager : Singleton<GameManager>
             StageValue = StageName.Count;
             Level++;
         }
-        
-        Stop = false;
 
-        //���� �ߴ� ������ �ȳ����� ���� �ʿ�   (������ ���� ��� �䱸)
+
         int randnum = Random.Range(0, StageValue);
         SceneManager.LoadScene(StageName[randnum]);
         string index = StageName[randnum];
-        //if (index != "Cat" && index != "pigeon")
-        //{
-        //    Debug.Log(index);
-        //    slider.gameObject.SetActive(true);
 
-        //}
-        //else
-        //{
-        //    slider.gameObject.SetActive(false);
-        //}
         slider.gameObject.SetActive(true);
         StageName.RemoveAt(randnum);
         StageName.Add(index);
-        minigame = FindObjectOfType<MinigameManager>();
-        Timer = minigame.TimerTime;
         StageValue--;
     }
     IEnumerator GameOver()
@@ -191,9 +178,18 @@ public class GameManager : Singleton<GameManager>
         isLose = false;
         SceneManager.LoadScene("MainBoard");
     }
+    private void OnLevelWasLoaded(int level)
+    {
+        if (level != 0)
+        {
+            minigame = FindObjectOfType<MinigameManager>();
+            nowTime = Timer = minigame.TimerTime;
+            Debug.Log(minigame.TimerTime);
+            Stop = false;
+        }
+    } 
     public void GameStart()
     {
-        Stop = false;
         StageValue = StageName.Count;
         Life = 3;
         Level = 1;
