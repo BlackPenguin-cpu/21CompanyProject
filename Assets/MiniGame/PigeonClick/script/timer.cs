@@ -19,6 +19,8 @@ public class timer : MonoBehaviour
         level = GameManager.Instance.Level;
         LevelTime();
         UI.GetComponent<Slider>().maxValue = sec;
+
+        sec = FindObjectOfType<MinigameManager>().TimerTime;
     }
 
     void Update()
