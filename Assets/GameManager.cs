@@ -176,18 +176,10 @@ public class GameManager : Singleton<GameManager>
         StageText.text = "GameOver...";
         yield return new WaitForSecondsRealtime(2);
         isLose = false;
+        blackScreen.gameObject.SetActive(false);
+        StageText.text = "";
         SceneManager.LoadScene("MainBoard");
     }
-    private void OnLevelWasLoaded(int level)
-    {
-        if (level != 0)
-        {
-            minigame = FindObjectOfType<MinigameManager>();
-            nowTime = Timer = minigame.TimerTime;
-            Debug.Log(minigame.TimerTime);
-            Stop = false;
-        }
-    } 
     public void GameStart()
     {
         StageValue = StageName.Count;
@@ -204,6 +196,16 @@ public class GameManager : Singleton<GameManager>
     void ChangeSliderColor(float value)
     {
         slider.value = value;
-        SliderFillColor.color = new Color(value, 1 - value, 0);
+        SliderFillColor.color = new Color(1 - value, value, 0);
     }
+    private void OnLevelWasLoaded(int level)
+    {
+        if (level != 1)
+        {
+            minigame = FindObjectOfType<MinigameManager>();
+            nowTime = Timer = minigame.TimerTime;
+            Debug.Log(minigame.TimerTime);
+            Stop = false;
+        }
+    } 
 }

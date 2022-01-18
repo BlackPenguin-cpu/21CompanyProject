@@ -6,7 +6,7 @@ public class MountainFireManager : MinigameManager
 {
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         switch (GameManager.Instance.Level)
         {
@@ -20,6 +20,11 @@ public class MountainFireManager : MinigameManager
                 TimerTime = 8;
                 break;
         }
+    }
+
+    void Start()
+    {
+
     }
 
     //여기 아래 안씀 다 고치기 힘들다 ㅠㅠ

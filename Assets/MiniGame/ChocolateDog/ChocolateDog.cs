@@ -13,11 +13,8 @@ public class ChocolateDog : MinigameManager
     public List<Sprite> DogSprites;
 
     Rigidbody2D rigid;
-
-    private void Start()
+    private void Awake()
     {
-        renderer = GetComponent<SpriteRenderer>();
-        rigid = GetComponent<Rigidbody2D>();
         switch (GameManager.Instance.Level)
         {
             case 1:
@@ -30,6 +27,11 @@ public class ChocolateDog : MinigameManager
                 TimerTime = 5;
                 break;
         }
+    }
+    private void Start()
+    {
+        renderer = GetComponent<SpriteRenderer>();
+        rigid = GetComponent<Rigidbody2D>();
     }
     void Update()
     {

@@ -11,7 +11,8 @@ public class ChocolateManager : MinigameManager
     public List<Sprite> DogSprites;
 
     public bool isGameOver;
-    private void Start()
+
+    private void Awake()
     {
         switch (GameManager.Instance.Level)
         {
@@ -25,6 +26,10 @@ public class ChocolateManager : MinigameManager
                 TimerTime = 5;
                 break;
         }
+    }
+    private void Start()
+    {
+
     }
 
     void Update()

@@ -16,7 +16,8 @@ public class Eik : MinigameManager
     public List<Sprite> eik;
 
     // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
         switch (GameManager.Instance.Level)
         {
@@ -27,9 +28,12 @@ public class Eik : MinigameManager
                 TimerTime = 15;
                 break;
             default:
-                TimerTime = 15 ;
+                TimerTime = 15;
                 break;
         }
+    }
+    void Start()
+    {
         renderer = GetComponent<SpriteRenderer>();
     }
 
@@ -71,9 +75,9 @@ public class Eik : MinigameManager
         spd = 0;
 
         image.DOFade(1, 2f);
-        if (Check)
+        if (!Check)
         {
-            Check = false;
+            Check = true;
             StartCoroutine(GameManager.Instance.ChangeScene(false, GameOver()));
         }
     }

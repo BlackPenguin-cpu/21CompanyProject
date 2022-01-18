@@ -697,7 +697,7 @@ MonoBehaviour:
   isNotSingle: 0
   originManagedObj: {fileID: 7687684334927255833, guid: c4de2d6369f8b514fbb3069d35baabbf, type: 3}
   FireCount: 2
-  Kanngaroo: {fileID: 0}
+  Kanngaroo: {fileID: 1842435422}
   Life: 0
   End: 0
 --- !u!4 &1802691087
@@ -790,7 +790,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842435422}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: -2, z: 0}
+  m_LocalPosition: {x: -9.97, y: -2, z: 0}
   m_LocalScale: {x: 0.35217988, y: 0.35217988, z: 0.35217988}
   m_Children: []
   m_Father: {fileID: 0}

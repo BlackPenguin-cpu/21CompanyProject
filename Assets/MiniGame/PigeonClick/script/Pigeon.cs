@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pigeon : MinigameManager   
+public class Pigeon : MinigameManager
 {
     private Camera MainCamera;
     public GameObject pigeon;
     public int maxspawn;
-
-    void Start()
+    private void Awake()
     {
         switch (GameManager.Instance.Level)
         {
@@ -21,8 +20,11 @@ public class Pigeon : MinigameManager
             default:
                 TimerTime = 10;
                 break;
-
         }
+    }
+
+    void Start()
+    {
         LevelSpawn();
         PigeonSpawn();
         MainCamera = FindObjectOfType<Camera>();
@@ -71,7 +73,7 @@ public class Pigeon : MinigameManager
     {
         if (Input.GetMouseButtonUp(0))
         {
-           
+
             Vector2 mousepos = MainCamera.ScreenToWorldPoint(Input.mousePosition);
             if (Physics2D.Raycast(mousepos, Vector3.forward))
             {

@@ -10,6 +10,22 @@ public class SeaTurtleManager : MinigameManager
     float Timer;
     bool isGameEnd;
 
+    private void Awake()
+    {
+        switch (GameManager.Instance.Level)
+        {
+            case 1:
+                TimerTime = 7;
+                break;
+            case 2:
+                TimerTime = 10;
+                break;
+            default:
+                TimerTime = 13;
+                break;
+        }
+    }
+
     void Start()
     {
         MainCamera = FindObjectOfType<Camera>();

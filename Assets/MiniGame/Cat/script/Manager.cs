@@ -21,7 +21,7 @@ public class Manager : MinigameManager
     public SpriteRenderer renderer;
     public List<Sprite> catcat;
 
-    void Start()
+    private void Awake()
     {
         switch (GameManager.Instance.Level)
         {
@@ -36,6 +36,9 @@ public class Manager : MinigameManager
                 break;
 
         }
+    }
+    void Start()
+    {
         sec = TimerTime;
         ClickLevel();
     }

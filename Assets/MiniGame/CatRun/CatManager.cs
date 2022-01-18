@@ -8,7 +8,8 @@ public class CatManager : MinigameManager
     float nowCooltime;
     public GameObject IronFan;
     List<int> a;
-    void Start()
+
+    private void Awake()
     {
         switch (GameManager.Instance.Level)
         {
@@ -16,6 +17,10 @@ public class CatManager : MinigameManager
                 TimerTime = 8;
                 break;
         }
+    }
+    void Start()
+    {
+
         nowCooltime = TimerTime;
     }
 
