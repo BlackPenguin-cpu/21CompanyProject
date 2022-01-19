@@ -12,6 +12,10 @@ public class MouseLight : MonoBehaviour
     public GameObject BigLight;
     public GameObject Light;
     public Material HumanAlpha;
+    public GameObject FunElephant;
+    public float LimitSecond = 12;
+    public bool TimerStop = false;
+    private bool isEnd = true;
     void Start()
     {
         MeshRenderer mr;
@@ -22,22 +26,33 @@ public class MouseLight : MonoBehaviour
     void Update()
     {
         Cursor();
+        if (TimerStop == false)
+        {
+            Timer();
+        }
 
         if (isclick)
         {
             GameClear();
+            isclick = false;
+        }
+
+        if (LimitSecond <= 0 && isEnd)
+        {
+            GameOver();
+            isEnd = false;
         }
     }
+
+
 
     void GameClear()
     {
         Light.GetComponent<Light>().range = 0;
         BigLight.SetActive(true);
-        //human.transform.Translate(new Vector3(0, 0, 8 * Time.deltaTime));
         StartCoroutine(EColorChange(HumanAlpha, Color.clear));
         MeshRenderer mr;
         GameObject.Find("Cube").TryGetComponent(out mr);
-        isclick = false;
     }
 
     void Cursor()
@@ -53,6 +68,7 @@ public class MouseLight : MonoBehaviour
             {
                 human = item.collider.gameObject;
                 isclick = true;
+                TimerStop = true;
             }
         }
 
@@ -69,5 +85,22 @@ public class MouseLight : MonoBehaviour
             img.color = Color.Lerp(img.color, newColor, Time.deltaTime * 5);
             yield return wait;
         }
+        GameWin();
+    }
+
+    void Timer()
+    {
+        LimitSecond -= Time.deltaTime;
+    }
+
+    void GameWin()
+    {
+        FunElephant.SetActive(true);
+        StartCoroutine(GameManager.Instance.ChangeScene(true, 2f));
+    }
+
+    void GameOver()
+    {
+        StartCoroutine(GameManager.Instance.ChangeScene(false, 2f));
     }
 }

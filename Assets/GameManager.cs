@@ -183,6 +183,7 @@ public class GameManager : Singleton<GameManager>
     public void GameStart()
     {
         StageValue = StageName.Count;
+        Score = 0;
         Life = 3;
         Level = 1;
         NextGame();
@@ -207,5 +208,5 @@ public class GameManager : Singleton<GameManager>
             Debug.Log(minigame.TimerTime);
             Stop = false;
         }
-    } 
+    }
 }
