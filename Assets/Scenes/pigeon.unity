@@ -437,8 +437,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimerTime: 0
-  StartString: 
-  AnimalNews: 
+  StartString: "\uB0A0\uB824\uB77C!"
+  AnimalNews: "\uBE44\uB458\uAE30\uB3C4 \uAD50\uD1B5\uC0AC\uACE0\uC5D0\uC11C \uC790\uC720\uB86D\uC9C0
+    \uBABB\uD558\uC8E0"
+  AnimalIcon: {fileID: 0}
   pigeon: {fileID: 48729122301781018, guid: 3736e5d023ac2f04ca7e164463ed46c9, type: 3}
   maxspawn: 0
 --- !u!1 &315831773
