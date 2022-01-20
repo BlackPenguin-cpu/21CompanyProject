@@ -15,7 +15,7 @@ public class GameManager : Singleton<GameManager>
     public int Score;
     public int Combo;
     public int Level;
-    // ���� ���� �����
+    public int ClearCount;
 
     [SerializeField] bool isLose;
     [SerializeField] private List<string> StageName;
@@ -115,20 +115,23 @@ public class GameManager : Singleton<GameManager>
         Time.timeScale = 0;
         if (isWin)
         {
+            TextMeshProUGUI ScoreUI = FindObjectOfType<UIManager>().Score;
             blackScreen.gameObject.SetActive(true);
+            blackScreen.color = new Color(0, 1, 0, 1);
             StageText.text = "GREAT!!! - Life: " + Life;
             Combo++;
             Score += 104 + (Random.Range(19, 22) * Combo);
             while (Scorenow != Score)
             {
                 Scorenow++;
-                ScoreText.text = "Combo: " + Combo + " Score: " + Scorenow.ToString();
+                ScoreUI.text = ScoreUI.ToString();
                 yield return new WaitForSecondsRealtime(0.005f);
             }
         }
         else
         {
             blackScreen.gameObject.SetActive(true);
+            blackScreen.color = new Color(0, 0, 0, 1);
             _Life--;
             StageText.text = ":(  - Life: " + Life;
             Combo = 0;
