@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using DG.Tweening;
+using System.Linq;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -43,7 +44,6 @@ public class GameManager : Singleton<GameManager>
 
     public int Stage;
     public Slider slider;
-    public Image blackScreen;
     public TextMeshProUGUI StageText;
     public TextMeshProUGUI ScoreText;
     public Image SliderFillColor;
@@ -124,13 +124,14 @@ public class GameManager : Singleton<GameManager>
         if (isWin)
         {
             TextMeshProUGUI ScoreUI = UIDirectory.Score;
-            blackScreen.gameObject.SetActive(true);
-            blackScreen.color = new Color(0, 1, 0, 1);
+            UIDirectory.BackGround.gameObject.SetActive(true);
+            UIDirectory.BackGround.color = new Color(0f, 0.7f, 0f, 1);
             //StageText.text = "GREAT!!! - Life: " + Life;
             ClearCount++;
             Combo++;
-            UIDirectory.Combo.text = Combo.ToString();
+            UIDirectory.Combo.text = "Combo : " + Combo.ToString();
             Score += 104 + (Random.Range(19, 22) * Combo);
+            UIDirectory.AnimalAll.text = "구한 총 동물 수 : " + ClearCount;
             float target = DelayedValue - (1 / (Score - Scorenow));
             while (Scorenow != Score)
             {
@@ -143,11 +144,15 @@ public class GameManager : Singleton<GameManager>
         {
             UIDirectory.BackGround.gameObject.SetActive(true);
             UIDirectory.BackGround.color = new Color(0, 0, 0, 1);
+            UIDirectory.Score.text = Score.ToString();
             _Life--;
-            StageText.text = ":(  - Life: " + Life;
+            //StageText.text = ":(  - Life: " + Life;
             Combo = 0;
-            UIDirectory.Combo.text = Combo.ToString();
+            UIDirectory.Combo.text = "Combo : " + Combo.ToString();
             UIDirectory.Score.text = Scorenow.ToString();
+            UIDirectory.AnimalAll.text = "구한 총 동물 수 : " + ClearCount;
+            yield return StartCoroutine(onLifeDown(UIDirectory.Life.LastOrDefault()));
+            UIDirectory.Life.Remove(UIDirectory.Life.LastOrDefault());
         }
 
 
@@ -187,11 +192,11 @@ public class GameManager : Singleton<GameManager>
     }
     IEnumerator GameOver()
     {
-        blackScreen.gameObject.SetActive(true);
+        UIManager.Instance.BackGround.gameObject.SetActive(true);
         StageText.text = "GameOver...";
         yield return new WaitForSecondsRealtime(2);
         isLose = false;
-        blackScreen.gameObject.SetActive(false);
+        UIManager.Instance.BackGround.gameObject.SetActive(false);
         StageText.text = "";
         SceneManager.LoadScene("MainBoard");
     }
@@ -213,6 +218,16 @@ public class GameManager : Singleton<GameManager>
     {
         slider.value = value;
         SliderFillColor.color = new Color(1 - value, value, 0);
+    }
+    IEnumerator onLifeDown(Image img)
+    {
+        Time.timeScale = 1;
+        img.transform.DOShakePosition(1.5f);
+        img.transform.DOShakeRotation(1.5f);
+        img.DOColor(new Color(0.1f, 0.1f, 0.1f), 1.5f);
+        yield return new WaitForSeconds(1.2f);
+        img.transform.DOMoveY(-100, 0.5f).SetEase(Ease.InBack);
+        yield return new WaitForSeconds(1);
     }
     private void OnLevelWasLoaded(int level)
     {

@@ -10,7 +10,8 @@ public class UIManager : Singleton<UIManager>
 {
     // 이거 그냥 데이터 저장소로 쓸꺼임 ㅇㅇ
     public Canvas ResultCanvas;
-    public Image[] Life;
+    [SerializeField]
+    public List<Image> Life;
     public Image BackGround;
     public TextMeshProUGUI Score;
     public TextMeshProUGUI Combo;
