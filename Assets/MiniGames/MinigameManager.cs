@@ -5,9 +5,9 @@ using UnityEngine;
 public abstract class MinigameManager : MonoBehaviour
 {
     public float TimerTime;
-    [SerializeField] protected string StartString;
-    [SerializeField] protected string AnimalNews;
-    [SerializeField] protected Sprite AnimalIcon;
+    public string StartString;
+    public string AnimalNews;
+    public Sprite AnimalIcon;
 
     public abstract IEnumerator GameOver();
     public abstract IEnumerator GameClear();

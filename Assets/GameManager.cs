@@ -48,6 +48,7 @@ public class GameManager : Singleton<GameManager>
     public TextMeshProUGUI ScoreText;
     public Image SliderFillColor;
     private MinigameManager minigame;
+    [SerializeField] private float DelayedValue = 1;
     private void Start()
     {
     }
@@ -113,34 +114,45 @@ public class GameManager : Singleton<GameManager>
     {
         int Scorenow = Score;
         Time.timeScale = 0;
+
+        UIManager UIDirectory = FindObjectOfType<UIManager>();
+        MinigameManager minigame = FindObjectOfType<MinigameManager>();
+        UIDirectory.ResultCanvas.gameObject.SetActive(true);
+        UIDirectory.AnimalNews.text = minigame.AnimalNews;
+        UIDirectory.AnimalIcon.sprite = minigame.AnimalIcon;
+        UIDirectory.AnimalAll.text = "구한 총 동물 수" + ClearCount;
         if (isWin)
         {
-            TextMeshProUGUI ScoreUI = FindObjectOfType<UIManager>().Score;
+            TextMeshProUGUI ScoreUI = UIDirectory.Score;
             blackScreen.gameObject.SetActive(true);
             blackScreen.color = new Color(0, 1, 0, 1);
-            StageText.text = "GREAT!!! - Life: " + Life;
+            //StageText.text = "GREAT!!! - Life: " + Life;
+            ClearCount++;
             Combo++;
+            UIDirectory.Combo.text = Combo.ToString();
             Score += 104 + (Random.Range(19, 22) * Combo);
+            float target = DelayedValue - (1 / (Score - Scorenow));
             while (Scorenow != Score)
             {
                 Scorenow++;
-                ScoreUI.text = ScoreUI.ToString();
-                yield return new WaitForSecondsRealtime(0.005f);
+                UIDirectory.Score.text = Scorenow.ToString();
+                yield return new WaitForSecondsRealtime(target);
             }
         }
         else
         {
-            blackScreen.gameObject.SetActive(true);
-            blackScreen.color = new Color(0, 0, 0, 1);
+            UIDirectory.BackGround.gameObject.SetActive(true);
+            UIDirectory.BackGround.color = new Color(0, 0, 0, 1);
             _Life--;
             StageText.text = ":(  - Life: " + Life;
             Combo = 0;
-            ScoreText.text = "Combo: " + Combo + " Score: " + Score.ToString();
+            UIDirectory.Combo.text = Combo.ToString();
+            UIDirectory.Score.text = Scorenow.ToString();
         }
 
 
         yield return new WaitForSecondsRealtime(1.5f);
-        blackScreen.gameObject.SetActive(false);
+        UIDirectory.ResultCanvas.gameObject.SetActive(false);
         StageText.text = "";
         ScoreText.text = "";
         Time.timeScale = LevelTimeScale();

@@ -9,15 +9,15 @@ using DG.Tweening;
 public class UIManager : Singleton<UIManager>
 {
     // 이거 그냥 데이터 저장소로 쓸꺼임 ㅇㅇ
+    public Canvas ResultCanvas;
     public Image[] Life;
     public Image BackGround;
     public TextMeshProUGUI Score;
     public TextMeshProUGUI Combo;
     public TextMeshProUGUI AnimalAll;
-    public TextMeshProUGUI AnumalNews;
+    public TextMeshProUGUI AnimalNews;
     public Image TimerGauge;
-
-
+    public Image AnimalIcon;
 
     //void Start()
     //{
