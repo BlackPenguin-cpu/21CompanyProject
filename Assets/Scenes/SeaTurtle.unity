@@ -307,6 +307,7 @@ MonoBehaviour:
   StartString: "\uCE58\uC6CC\uB77C!"
   AnimalNews: "\uD574\uB9C8\uB2E4 \uBC84\uB824\uC9C0\uB294 \uBE44\uB2D0 \uBB34\uB824
     3t, \uC774 \uBE44\uB2D0\uC5D0 \uBC14\uB2E4\uAC70\uBD81\uC774 \uACE0\uD1B5\uBC1B\uC544\uC694"
+  AnimalIcon: {fileID: 21300000, guid: 262ef5a5136755c4a93ed6c6df4d5666, type: 3}
 --- !u!50 &1690779106
 Rigidbody2D:
   serializedVersion: 4

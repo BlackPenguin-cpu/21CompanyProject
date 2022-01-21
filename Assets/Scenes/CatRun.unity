@@ -222,6 +222,7 @@ MonoBehaviour:
   StartString: "\uC810\uD504\uD574\uB77C!"
   AnimalNews: "\uC18C\uB3D9\uBB3C\uC774 \uD558\uC218\uAD6C\uC5D0 \uBE60\uC9C0\uB294
     \uC0AC\uAC74\uC740 \uB9E4\uB144 \uB04A\uC774\uC9C0 \uC54A\uB294\uB2E4 \uD569\uB2C8\uB2E4 "
+  AnimalIcon: {fileID: 21300000, guid: 74ad67e189fdc8346a59679909f94eed, type: 3}
   Cooldown: 0
   IronFan: {fileID: 7382147471452362397, guid: 8a85fa36cbe0f6a43b644c355ca0bda3, type: 3}
 --- !u!4 &598442865

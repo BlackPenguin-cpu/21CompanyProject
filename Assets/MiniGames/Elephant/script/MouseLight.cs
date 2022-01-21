@@ -46,13 +46,13 @@ public class MouseLight : MonoBehaviour
 
 
 
-    void GameClear()
+    public IEnumerator GameClear()
     {
         Light.GetComponent<Light>().range = 0;
         BigLight.SetActive(true);
-        StartCoroutine(EColorChange(HumanAlpha, Color.clear));
         MeshRenderer mr;
         GameObject.Find("Cube").TryGetComponent(out mr);
+        yield return StartCoroutine(EColorChange(HumanAlpha, Color.clear));
     }
 
     void Cursor()
@@ -96,7 +96,7 @@ public class MouseLight : MonoBehaviour
     void GameWin()
     {
         FunElephant.SetActive(true);
-        StartCoroutine(GameManager.Instance.ChangeScene(true, 2f));
+        StartCoroutine(GameManager.Instance.ChangeScene(true, GameClear()));
     }
 
     void GameOver()

@@ -152,12 +152,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e50035e0b0d2fa4890a39a6c52f66f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isNotSingle: 0
+  TimerTime: 0
+  StartString: 
+  AnimalNews: 
+  AnimalIcon: {fileID: 0}
   renderer: {fileID: 576444688}
   DogSprites:
   - {fileID: 21300000, guid: 4649fc4213f1b914582c8cb326e66eea, type: 3}
   - {fileID: 21300000, guid: 6deceec78f6badf429190d1d61a8ed15, type: 3}
   - {fileID: 21300000, guid: 5a4c21173a0acda459aa3495fe51f8dd, type: 3}
+  isGameOver: 0
 --- !u!4 &42915456
 Transform:
   m_ObjectHideFlags: 0
@@ -430,6 +434,7 @@ MonoBehaviour:
   StartString: "\uB9C9\uC544\uB77C!"
   AnimalNews: "\uC5B4\uC9C0\uAC04\uD55C \uB3D9\uBB3C\uB4E4\uC5D0\uAC8C\uB294 \uC808\uB300\uB85C
     \uCD08\uCF5C\uB9BF\uC744 \uBA39\uC774\uBA74 \uC548\uB429\uB2C8\uB2E4. "
+  AnimalIcon: {fileID: 21300000, guid: 5bc702248912c3948b927652e301ce23, type: 3}
   Speed: 5
   BackSpeed: 10
   isOver: 0
