@@ -25,6 +25,8 @@ public class Pigeon : MinigameManager
 
     void Start()
     {
+        SoundManager.Instance.PlaySound("Drive");
+
         LevelSpawn();
         PigeonSpawn();
         MainCamera = FindObjectOfType<Camera>();

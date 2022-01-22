@@ -39,6 +39,8 @@ public class Manager : MinigameManager
     }
     void Start()
     {
+        SoundManager.Instance.PlaySound("Drive");
+
         sec = TimerTime;
         ClickLevel();
     }
@@ -119,6 +121,8 @@ public class Manager : MinigameManager
 
     public override IEnumerator GameOver()
     {
+        SoundManager.Instance.PlaySound("Engine");
+
         speeeeeeeeed += Time.deltaTime * 3.21221f;
         cat.SetActive(false);
         die.SetActive(true);
@@ -134,6 +138,8 @@ public class Manager : MinigameManager
 
     public override IEnumerator GameClear()
     {
+
+
         cat.transform.DOMoveX(-17, 4);
         renderer.sprite = catcat[0];
         check = true;

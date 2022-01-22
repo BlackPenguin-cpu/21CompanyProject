@@ -125,6 +125,8 @@ public class GameManager : Singleton<GameManager>
         UIDirectory.AnimalAll.text = "���� �� ���� ��" + ClearCount;
         if (isWin)
         {
+            SoundManager.Instance.PlaySound("Clear");
+
             TextMeshProUGUI ScoreUI = UIDirectory.Score;
             UIDirectory.BackGround.gameObject.SetActive(true);
             UIDirectory.BackGround.color = new Color(0f, 0.7f, 0f, 1);
@@ -144,6 +146,8 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
+            SoundManager.Instance.PlaySound("Failde");
+
             UIDirectory.BackGround.gameObject.SetActive(true);
             UIDirectory.BackGround.color = new Color(0, 0, 0, 1);
             UIDirectory.Score.text = Score.ToString();
@@ -167,6 +171,7 @@ public class GameManager : Singleton<GameManager>
         nowTime = 0;
         if (isLose)
         {
+            SoundManager.Instance.PlaySound("Failde");
             StartCoroutine(GameOver());
         }
         else
@@ -194,6 +199,8 @@ public class GameManager : Singleton<GameManager>
     }
     IEnumerator GameOver()
     {
+        
+
         UIDirectory.BackGround.gameObject.SetActive(true);
         UIDirectory.AnimalNews.text = "GameOver...";
         yield return new WaitForSecondsRealtime(2);
@@ -208,6 +215,9 @@ public class GameManager : Singleton<GameManager>
         Score = 0;
         Life = 3;
         Level = 1;
+
+        SoundManager.Instance.Playbgm("Ingame_BGM");
+
         NextGame();
     }
 
