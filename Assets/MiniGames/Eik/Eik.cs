@@ -60,6 +60,8 @@ public class Eik : MinigameManager
         {
             transform.position += new Vector3(Time.deltaTime * spd, 0, 0);
 
+            SoundManager.Instance.PlaySound("Jump");
+
             renderer.sprite = eik[0];
         }
         else if (!Input.GetMouseButton(0))

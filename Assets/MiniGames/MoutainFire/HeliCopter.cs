@@ -15,6 +15,8 @@ public class HeliCopter : ObjectPool<Water>
         fireManager = FindObjectOfType<FireManager>();
         rigid = GetComponent<Rigidbody2D>();
         cam = FindObjectOfType<Camera>();
+
+        SoundManager.Instance.PlaySound("Heli");
     }
 
     // Update is called once per frame

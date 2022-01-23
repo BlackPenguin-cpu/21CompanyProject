@@ -138,7 +138,7 @@ public class Manager : MinigameManager
 
     public override IEnumerator GameClear()
     {
-
+        SoundManager.Instance.PlaySound("meow");
 
         cat.transform.DOMoveX(-17, 4);
         renderer.sprite = catcat[0];

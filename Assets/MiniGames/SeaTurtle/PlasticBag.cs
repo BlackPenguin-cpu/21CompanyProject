@@ -67,4 +67,10 @@ public class PlasticBag : MonoBehaviour
             StartCoroutine(GameManager.Instance.ChangeScene(false, FindObjectOfType<SeaTurtleManager>().GameOver()));
         }
     }
+
+    public void ClickSound()
+    {
+        SoundManager.Instance.PlaySound("Button_Click");
+    }
+
 }

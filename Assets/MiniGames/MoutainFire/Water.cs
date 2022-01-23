@@ -24,6 +24,7 @@ public class Water : MonoBehaviour
             Fire fire = collision.GetComponent<Fire>();
 
             fire._Hp--;
+            SoundManager.Instance.PlaySound("Fire_fighting");
             HeliCopter.Instance.ReturnObj(gameObject.GetComponent<Water>());
         }
     }

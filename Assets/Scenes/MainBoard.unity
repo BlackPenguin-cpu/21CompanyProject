@@ -3666,6 +3666,22 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: c42a1ee3806e5414b93f620c6368c688, type: 3}
   - Name: plastic
     clip: {fileID: 8300000, guid: 2019d2325d4f007409edc50ce3ab5072, type: 3}
+  - Name: Jump
+    clip: {fileID: 8300000, guid: eb0bce62f223cbf4b90f3e8106bdfbbd, type: 3}
+  - Name: Fall
+    clip: {fileID: 8300000, guid: 66094ec2f1776c14f983938fde3d282f, type: 3}
+  - Name: Heli
+    clip: {fileID: 8300000, guid: 33199edaa05ae1f4286fd89a523df347, type: 3}
+  - Name: Fire_fighting
+    clip: {fileID: 8300000, guid: 490f3fb49949f00408ec16a19d1fcfaa, type: 3}
+  - Name: Fire
+    clip: {fileID: 8300000, guid: 44a25eea9706faf4ba336f4416095fcb, type: 3}
+  - Name: meow
+    clip: {fileID: 8300000, guid: 4270d8930b5e5b0439f3b756fe163359, type: 3}
+  - Name: meow
+    clip: {fileID: 8300000, guid: 4270d8930b5e5b0439f3b756fe163359, type: 3}
+  - Name: flyng
+    clip: {fileID: 8300000, guid: 1efe9c4bc0521ae45acd302d052ec4da, type: 3}
   BGMBar: {fileID: 821239667}
   SFXBar: {fileID: 1484651637}
   On: 1

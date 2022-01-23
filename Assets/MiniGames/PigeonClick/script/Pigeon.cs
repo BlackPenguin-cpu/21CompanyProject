@@ -75,6 +75,7 @@ public class Pigeon : MinigameManager
     {
         if (Input.GetMouseButtonUp(0))
         {
+            SoundManager.Instance.PlaySound("flyng");
 
             Vector2 mousepos = MainCamera.ScreenToWorldPoint(Input.mousePosition);
             if (Physics2D.Raycast(mousepos, Vector3.forward))
