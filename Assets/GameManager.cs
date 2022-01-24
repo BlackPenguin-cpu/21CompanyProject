@@ -49,9 +49,8 @@ public class GameManager : Singleton<GameManager>
     public Image SliderFillColor;
     private MinigameManager minigame;
     [SerializeField] private float DelayedValue = 1;
-    private void Start()
-    {
-    }
+    [SerializeField] Image NextSceneTimer;
+    [SerializeField] Image BackGround;
 
     // Start is called before the first frame update
     protected override void Awake()
@@ -160,6 +159,8 @@ public class GameManager : Singleton<GameManager>
         UIDirectory.ResultCanvas.gameObject.SetActive(false);
         StageText.text = "";
         ScoreText.text = "";
+        yield return StartCoroutine(NextScenePage());
+
         Time.timeScale = LevelTimeScale();
 
         nowTime = 0;
@@ -238,5 +239,22 @@ public class GameManager : Singleton<GameManager>
             Debug.Log(minigame.TimerTime);
             Stop = false;
         }
+    }
+
+    IEnumerator NextScenePage()
+    {
+
+        float value = 1;
+        BackGround.color = new Color(0, 0, 0);
+        BackGround.gameObject.SetActive(true);
+        ScoreText.text = minigame.StartString;
+        while (value <= 0)
+        {
+            value -= 0.005f;
+            NextSceneTimer.fillAmount = value;
+            yield return new WaitForSecondsRealtime(0.01f);
+        }
+        BackGround.gameObject.SetActive(false);
+        ScoreText.text = "";
     }
 }
