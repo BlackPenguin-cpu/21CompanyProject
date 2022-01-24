@@ -481,8 +481,8 @@ MonoBehaviour:
   ScoreText: {fileID: 2087475645}
   SliderFillColor: {fileID: 692892852}
   NextText: {fileID: 610852115}
-  NextSceneImage: {fileID: 703680142}
-  NextSceneSlider: {fileID: 2007983313}
+  NextSceneImage: {fileID: 0}
+  NextSceneSlider: {fileID: 0}
   DelayedValue: 0
 --- !u!4 &317458921
 Transform:
@@ -1679,12 +1679,12 @@ GameObject:
   - component: {fileID: 879419832}
   - component: {fileID: 879419831}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: NextScene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &879419830
 RectTransform:
   m_ObjectHideFlags: 0
