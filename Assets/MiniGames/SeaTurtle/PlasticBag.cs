@@ -70,7 +70,9 @@ public class PlasticBag : MonoBehaviour
 
     public void ClickSound()
     {
+        Debug.Log("!!!!!");
         SoundManager.Instance.PlaySound("Button_Click");
+        Debug.Log("@@@@@@@@@@");
     }
 
 }
