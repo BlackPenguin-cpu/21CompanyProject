@@ -42,14 +42,15 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    public int Stage;
-    public Slider slider;
-    public TextMeshProUGUI StageText;
-    public TextMeshProUGUI ScoreText;
-    public Image SliderFillColor;
+    [SerializeField] int Stage;
+    [SerializeField] Slider slider;
+    [SerializeField] TextMeshProUGUI StageText;
+    [SerializeField] TextMeshProUGUI ScoreText;
+    [SerializeField] Image SliderFillColor;
     private MinigameManager minigame;
     UIManager UIDirectory;
     public TextMeshProUGUI NextText;
+    [SerializeField] 
 
     [SerializeField] private float DelayedValue = 1;
     private void Start()
@@ -256,6 +257,7 @@ public class GameManager : Singleton<GameManager>
     public IEnumerator ResultScreenDelay()
     {
         Image Gauge = UIDirectory.TimerGauge;
+
         while (Gauge.transform.localScale.x <= 0)
         {
             Gauge.transform.localScale += new Vector3(-1, 0, 0);
@@ -266,5 +268,10 @@ public class GameManager : Singleton<GameManager>
     {
         UIDirectory.Life[0].transform.DOMoveY(-10, 4).SetEase(Ease.InBack);
         yield return new WaitForSeconds(1);
+    }
+    public IEnumerator NextScenePage()
+    {
+        while()
+        yield return new WaitForSecondsRealtime(0.01f);
     }
 }
