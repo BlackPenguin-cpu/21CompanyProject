@@ -28,7 +28,7 @@ public class SeaTurtleManager : MinigameManager
 
     void Start()
     {
-        SoundManager.Instance.PlaySound("Diving");
+        
 
         MainCamera = FindObjectOfType<Camera>();
     }
@@ -81,6 +81,8 @@ public class SeaTurtleManager : MinigameManager
 
     public override IEnumerator GameOver()
     {
+        SoundManager.Instance.PlaySound("Diving");
+
         Rigidbody2D rigid = GetComponent<Rigidbody2D>();
         rigid.isKinematic = false;
         rigid.gravityScale = 0.4f;

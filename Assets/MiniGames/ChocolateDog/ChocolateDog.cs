@@ -57,6 +57,7 @@ public class ChocolateDog : MinigameManager
         {
             Destroy(collision.gameObject);
             renderer.sprite = DogSprites[1];
+            SoundManager.Instance.PlaySound("Eating");
             StartCoroutine(GameManager.Instance.ChangeScene(false, GameOver()));
         }
     }

@@ -168,7 +168,7 @@ public class GameManager : Singleton<GameManager>
         UIDirectory.ResultCanvas.gameObject.SetActive(false);
         StageText.text = "";
         ScoreText.text = "";
-        yield return StartCoroutine(NextScenePage());
+        //yield return StartCoroutine(NextScenePage());
 
         Time.timeScale = LevelTimeScale();
 

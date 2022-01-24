@@ -4071,6 +4071,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 4270d8930b5e5b0439f3b756fe163359, type: 3}
   - Name: flyng
     clip: {fileID: 8300000, guid: 1efe9c4bc0521ae45acd302d052ec4da, type: 3}
+  - Name: dog
+    clip: {fileID: 8300000, guid: a10416b76d8ea2a4ba6f7ea96c8761d8, type: 3}
+  - Name: Eating
+    clip: {fileID: 8300000, guid: a0dda90b441347441804c51a0653dcab, type: 3}
   BGMBar: {fileID: 821239667}
   SFXBar: {fileID: 1484651637}
   On: 1

@@ -31,7 +31,7 @@ public class FireManager : ObjectPool<Fire>
 
     public IEnumerator Gameoverr()
     {
-        
+        SoundManager.Instance.PlaySound("Fire");
 
         End = true;
         for (int i = 0; i < 6; i++)
@@ -45,7 +45,7 @@ public class FireManager : ObjectPool<Fire>
     {
         if (Life <= 0 && End == false)
         {
-            SoundManager.Instance.PlaySound("Fire");
+            
 
             StartCoroutine(GameManager.Instance.ChangeScene(true, GameClear()));
             End = true;

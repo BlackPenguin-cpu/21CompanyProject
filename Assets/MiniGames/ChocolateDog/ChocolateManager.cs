@@ -52,6 +52,7 @@ public class ChocolateManager : MinigameManager
                 if (positition.x - 2 > Input.mousePosition.x)
                 {
                     renderer.sprite = DogSprites[2];
+                    SoundManager.Instance.PlaySound("dog");
                     StartCoroutine(FindObjectOfType<ChocolateDog>().OnDrag());
 
                 }
