@@ -49,8 +49,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] Image SliderFillColor;
     private MinigameManager minigame;
     UIManager UIDirectory;
-    public TextMeshProUGUI NextText;
-    [SerializeField] 
+    [SerializeField] TextMeshProUGUI NextText;
+    [SerializeField] Image NextSceneImage;
 
     [SerializeField] private float DelayedValue = 1;
     private void Start()
@@ -202,7 +202,7 @@ public class GameManager : Singleton<GameManager>
     }
     IEnumerator GameOver()
     {
-        
+
 
         UIDirectory.BackGround.gameObject.SetActive(true);
         UIDirectory.AnimalNews.text = "GameOver...";
@@ -271,7 +271,18 @@ public class GameManager : Singleton<GameManager>
     }
     public IEnumerator NextScenePage()
     {
-        while()
-        yield return new WaitForSecondsRealtime(0.01f);
+        float value = 1;
+        NextSceneImage.gameObject.SetActive(true);
+        NextText.gameObject.SetActive(true);
+
+        while (value <= 0)
+        {
+            value -= -0.01f;
+            NextSceneImage.fillAmount = value;
+            yield return new WaitForSecondsRealtime(0.01f);
+        }
+
+        NextSceneImage.gameObject.SetActive(false);
+        NextText.gameObject.SetActive(false);
     }
 }
