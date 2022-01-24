@@ -48,9 +48,14 @@ public class GameManager : Singleton<GameManager>
     public TextMeshProUGUI ScoreText;
     public Image SliderFillColor;
     private MinigameManager minigame;
+    UIManager UIDirectory;
+    public TextMeshProUGUI NextText;
+
     [SerializeField] private float DelayedValue = 1;
-    [SerializeField] Image NextSceneTimer;
-    [SerializeField] Image BackGround;
+    private void Start()
+    {
+        UIDirectory = FindObjectOfType<UIManager>();
+    }
 
     // Start is called before the first frame update
     protected override void Awake()
@@ -59,7 +64,6 @@ public class GameManager : Singleton<GameManager>
         Stop = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         ChangeSliderColor(nowTime / Timer);
@@ -114,14 +118,15 @@ public class GameManager : Singleton<GameManager>
         int Scorenow = Score;
         Time.timeScale = 0;
 
-        UIManager UIDirectory = FindObjectOfType<UIManager>();
-        MinigameManager minigame = FindObjectOfType<MinigameManager>();
+        minigame = FindObjectOfType<MinigameManager>();
         UIDirectory.ResultCanvas.gameObject.SetActive(true);
         UIDirectory.AnimalNews.text = minigame.AnimalNews;
         UIDirectory.AnimalIcon.sprite = minigame.AnimalIcon;
-        UIDirectory.AnimalAll.text = "±¸ÇÑ ÃÑ µ¿¹° ¼ö" + ClearCount;
+        UIDirectory.AnimalAll.text = "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½" + ClearCount;
         if (isWin)
         {
+            SoundManager.Instance.PlaySound("Clear");
+
             TextMeshProUGUI ScoreUI = UIDirectory.Score;
             UIDirectory.BackGround.gameObject.SetActive(true);
             UIDirectory.BackGround.color = new Color(0f, 0.7f, 0f, 1);
@@ -130,7 +135,7 @@ public class GameManager : Singleton<GameManager>
             Combo++;
             UIDirectory.Combo.text = "Combo : " + Combo.ToString();
             Score += 104 + (Random.Range(19, 22) * Combo);
-            UIDirectory.AnimalAll.text = "±¸ÇÑ ÃÑ µ¿¹° ¼ö : " + ClearCount;
+            UIDirectory.AnimalAll.text = "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ : " + ClearCount;
             float target = DelayedValue - (1 / (Score - Scorenow));
             while (Scorenow != Score)
             {
@@ -141,21 +146,23 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
+            SoundManager.Instance.PlaySound("Failde");
+
             UIDirectory.BackGround.gameObject.SetActive(true);
             UIDirectory.BackGround.color = new Color(0, 0, 0, 1);
             UIDirectory.Score.text = Score.ToString();
             _Life--;
-            //StageText.text = ":(  - Life: " + Life;
             Combo = 0;
             UIDirectory.Combo.text = "Combo : " + Combo.ToString();
             UIDirectory.Score.text = Scorenow.ToString();
-            UIDirectory.AnimalAll.text = "±¸ÇÑ ÃÑ µ¿¹° ¼ö : " + ClearCount;
+            UIDirectory.AnimalAll.text = "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ : " + ClearCount;
             yield return StartCoroutine(onLifeDown(UIDirectory.Life.LastOrDefault()));
             UIDirectory.Life.Remove(UIDirectory.Life.LastOrDefault());
         }
 
 
-        yield return new WaitForSecondsRealtime(1.5f);
+        //yield return new WaitForSecondsRealtime(1.5f);
+        yield return StartCoroutine(ResultScreenDelay());
         UIDirectory.ResultCanvas.gameObject.SetActive(false);
         StageText.text = "";
         ScoreText.text = "";
@@ -166,6 +173,7 @@ public class GameManager : Singleton<GameManager>
         nowTime = 0;
         if (isLose)
         {
+            SoundManager.Instance.PlaySound("Failde");
             StartCoroutine(GameOver());
         }
         else
@@ -193,12 +201,14 @@ public class GameManager : Singleton<GameManager>
     }
     IEnumerator GameOver()
     {
-        UIManager.Instance.BackGround.gameObject.SetActive(true);
-        StageText.text = "GameOver...";
+        
+
+        UIDirectory.BackGround.gameObject.SetActive(true);
+        UIDirectory.AnimalNews.text = "GameOver...";
         yield return new WaitForSecondsRealtime(2);
         isLose = false;
-        UIManager.Instance.BackGround.gameObject.SetActive(false);
-        StageText.text = "";
+        UIDirectory.BackGround.gameObject.SetActive(false);
+        UIDirectory.AnimalNews.text = "";
         SceneManager.LoadScene("MainBoard");
     }
     public void GameStart()
@@ -207,6 +217,9 @@ public class GameManager : Singleton<GameManager>
         Score = 0;
         Life = 3;
         Level = 1;
+
+        SoundManager.Instance.Playbgm("Ingame_BGM");
+
         NextGame();
     }
 
@@ -240,21 +253,18 @@ public class GameManager : Singleton<GameManager>
             Stop = false;
         }
     }
-
-    IEnumerator NextScenePage()
+    public IEnumerator ResultScreenDelay()
     {
-
-        float value = 1;
-        BackGround.color = new Color(0, 0, 0);
-        BackGround.gameObject.SetActive(true);
-        ScoreText.text = minigame.StartString;
-        while (value <= 0)
+        Image Gauge = UIDirectory.TimerGauge;
+        while (Gauge.transform.localScale.x <= 0)
         {
-            value -= 0.005f;
-            NextSceneTimer.fillAmount = value;
-            yield return new WaitForSecondsRealtime(0.01f);
+            Gauge.transform.localScale += new Vector3(-1, 0, 0);
+            yield return new WaitForSecondsRealtime(0.002f);
         }
-        BackGround.gameObject.SetActive(false);
-        ScoreText.text = "";
+    }
+    public IEnumerator onLifeMinus()
+    {
+        UIDirectory.Life[0].transform.DOMoveY(-10, 4).SetEase(Ease.InBack);
+        yield return new WaitForSeconds(1);
     }
 }

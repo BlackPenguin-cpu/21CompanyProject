@@ -41,16 +41,20 @@ public class CatControlable : MonoBehaviour
     }
     IEnumerator Jump()
     {
+        SoundManager.Instance.PlaySound("Jump");
+
         yield return new WaitForSeconds(1);
         state = State.RUN;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+       
         JumpCount = 1;
         if (collision.gameObject.tag.Contains("IronFan"))
         {
             StartCoroutine(GameManager.Instance.ChangeScene(false, GameOver()));
+            SoundManager.Instance.PlaySound("Fall");
         }
     }
 

@@ -19,11 +19,15 @@ public class SoundManager : Singleton<SoundManager>
     public bool On = true;
     public bool SFXOn = true;
 
+    public List<Sprite> sprites;
+    public Image Bgmimg;
+    public Image Sfximg;
+
     float SEvolume = 1;
     protected SoundManager() { }
 
     public void Playbgm(string name)
-    //사용법 Sound.Instance.ChangeClip("이름",루프 할껀지안할껀지(bool))
+    //사용법 SoundManager.Instance.Playbgm("string");
     {
         Clip find = clips.Find((o) => { return o.Name == name; });
         if (find != null)
@@ -34,6 +38,8 @@ public class SoundManager : Singleton<SoundManager>
             audioSource.Play();
 
         }
+      
+
     }
 
     public void PlaySound(string _clip)
@@ -82,11 +88,13 @@ public class SoundManager : Singleton<SoundManager>
         switch (On)
         {
             case true:
-                BGMBar.image.color = Color.green;
+                // BGMBar.image.color = Color.green;
+                Bgmimg.sprite = sprites[0];
                 audioSource.volume = 100;
                 break;
             case false:
-                BGMBar.image.color = Color.red;
+                //BGMBar.image.color = Color.red;
+                Bgmimg.sprite = sprites[1];
                 audioSource.volume = 0;
                 break;
         }
@@ -109,11 +117,13 @@ public class SoundManager : Singleton<SoundManager>
         switch (SFXOn)
         {
             case true:
-                SFXBar.image.color = Color.green;
+                //SFXBar.image.color = Color.green;
+                Sfximg.sprite = sprites[0];
                 SEvolume = 100;
                 break;
             case false:
-                SFXBar.image.color = Color.red;
+                //SFXBar.image.color = Color.red;
+                Sfximg.sprite = sprites[1];
                 SEvolume = 0;
                 break;
         }

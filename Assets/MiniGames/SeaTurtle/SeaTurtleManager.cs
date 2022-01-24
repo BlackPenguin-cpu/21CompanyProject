@@ -28,6 +28,8 @@ public class SeaTurtleManager : MinigameManager
 
     void Start()
     {
+        SoundManager.Instance.PlaySound("Diving");
+
         MainCamera = FindObjectOfType<Camera>();
     }
 

@@ -39,6 +39,8 @@ public class PlasticBag : MonoBehaviour
     {
         if (isMouseDown)
         {
+            
+
             Vector3 mousepos = MainCamera.ScreenToWorldPoint(Input.mousePosition);
             Vector3 pos = mousepos - transform.position;
             Vector3.Normalize(pos);
@@ -65,4 +67,10 @@ public class PlasticBag : MonoBehaviour
             StartCoroutine(GameManager.Instance.ChangeScene(false, FindObjectOfType<SeaTurtleManager>().GameOver()));
         }
     }
+
+    public void ClickSound()
+    {
+        SoundManager.Instance.PlaySound("Button_Click");
+    }
+
 }

@@ -28,6 +28,7 @@ public class PlasticBagManager : ObjectPool<PlasticBag>
     }
     void CreateObj()
     {
+        //SoundManager.Instance.PlaySound("plastic");
         GetObj(new Vector3(Random.Range(-11.0f, 11.0f), -5, 0), Quaternion.identity, transform, true);
     }
 }
