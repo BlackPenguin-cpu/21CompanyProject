@@ -19,6 +19,7 @@ public class UIManager : Singleton<UIManager>
     public TextMeshProUGUI AnimalNews;
     public Image TimerGauge;
     public Image AnimalIcon;
+    public string AnimalAllText;
 
     //void Start()
     //{

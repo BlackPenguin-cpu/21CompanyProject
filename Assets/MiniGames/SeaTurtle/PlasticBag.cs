@@ -28,6 +28,7 @@ public class PlasticBag : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         MainCamera = FindObjectOfType<Camera>();
+        rigid.AddTorque(-1, ForceMode2D.Impulse);
     }
 
     // Update is called once per frame

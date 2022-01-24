@@ -124,7 +124,7 @@ public class GameManager : Singleton<GameManager>
         UIDirectory.ResultCanvas.gameObject.SetActive(true);
         UIDirectory.AnimalNews.text = minigame.AnimalNews;
         UIDirectory.AnimalIcon.sprite = minigame.AnimalIcon;
-        UIDirectory.AnimalAll.text = "���� �� ���� ��" + ClearCount;
+        UIDirectory.AnimalAll.text = UIDirectory.AnimalAllText + ClearCount;
         if (isWin)
         {
             SoundManager.Instance.PlaySound("Clear");
@@ -137,7 +137,7 @@ public class GameManager : Singleton<GameManager>
             Combo++;
             UIDirectory.Combo.text = "Combo : " + Combo.ToString();
             Score += 104 + (Random.Range(19, 22) * Combo);
-            UIDirectory.AnimalAll.text = "���� �� ���� �� : " + ClearCount;
+            UIDirectory.AnimalAll.text = UIDirectory.AnimalAllText + ClearCount;
             float target = DelayedValue - (1 / (Score - Scorenow));
             while (Scorenow != Score)
             {
@@ -157,20 +157,17 @@ public class GameManager : Singleton<GameManager>
             Combo = 0;
             UIDirectory.Combo.text = "Combo : " + Combo.ToString();
             UIDirectory.Score.text = Scorenow.ToString();
-            UIDirectory.AnimalAll.text = "���� �� ���� �� : " + ClearCount;
+            UIDirectory.AnimalAll.text = UIDirectory.AnimalAllText + ClearCount;
             yield return StartCoroutine(onLifeDown(UIDirectory.Life.LastOrDefault()));
             UIDirectory.Life.Remove(UIDirectory.Life.LastOrDefault());
         }
 
 
-        //yield return new WaitForSecondsRealtime(1.5f);
+        yield return new WaitForSecondsRealtime(1.5f);
         yield return StartCoroutine(ResultScreenDelay());
         UIDirectory.ResultCanvas.gameObject.SetActive(false);
         StageText.text = "";
         ScoreText.text = "";
-        //yield return StartCoroutine(NextScenePage());
-
-        Time.timeScale = LevelTimeScale();
 
         nowTime = 0;
         if (isLose)
@@ -180,17 +177,16 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
-            NextGame();
+            StartCoroutine(NextGame());
         }
     }
-    void NextGame()
+    IEnumerator NextGame()
     {
         if (StageValue < 0)
         {
             StageValue = StageName.Count;
             Level++;
         }
-
 
         int randnum = Random.Range(0, StageValue);
         SceneManager.LoadScene(StageName[randnum]);
@@ -200,11 +196,12 @@ public class GameManager : Singleton<GameManager>
         StageName.RemoveAt(randnum);
         StageName.Add(index);
         StageValue--;
+
+        yield return StartCoroutine(NextScenePage());
+        //Time.timeScale = LevelTimeScale();
     }
     IEnumerator GameOver()
     {
-
-
         UIDirectory.BackGround.gameObject.SetActive(true);
         UIDirectory.AnimalNews.text = "GameOver...";
         yield return new WaitForSecondsRealtime(2);
@@ -221,8 +218,8 @@ public class GameManager : Singleton<GameManager>
         Level = 1;
 
         SoundManager.Instance.Playbgm("Ingame_BGM");
-
-        NextGame();
+        Time.timeScale = 0;
+        StartCoroutine(NextGame());
     }
 
     float LevelTimeScale()
@@ -272,21 +269,25 @@ public class GameManager : Singleton<GameManager>
     public IEnumerator NextScenePage()
     {
         float value = 1;
+        Time.timeScale = 0;
         NextSceneImage.gameObject.SetActive(true);
         NextText.gameObject.SetActive(true);
         NextSceneSlider.gameObject.SetActive(true);
+        yield return null;
         NextText.text = minigame.StartString;
+        NextText.rectTransform.position = NextText.transform.position + new Vector3(0, 100, 0);
 
-        while (value <= 0)
+        while (value > 0)
         {
-            Debug.Log("asasdasd");
+            NextText.transform.position = Vector3.Lerp(NextText.transform.position,new Vector3(960,540,0),0.01f);
             NextSceneSlider.fillAmount = value;
-            value -= -0.01f;
+            value -= 0.01f;
             yield return new WaitForSecondsRealtime(0.01f);
         }
 
-        NextSceneSlider.gameObject.SetActive(true);
+        NextSceneSlider.gameObject.SetActive(false);
         NextSceneImage.gameObject.SetActive(false);
         NextText.gameObject.SetActive(false);
+        Time.timeScale = LevelTimeScale();
     }
 }

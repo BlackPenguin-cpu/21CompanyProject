@@ -242,6 +242,7 @@ MonoBehaviour:
   StartString: " \uAC74\uB108\uB77C!"
   AnimalNews: "\uC9C0\uB09C 5\uB144\uAC04 \uB85C\uB4DC\uD0AC\uB85C \uACE0\uB77C\uB2C8\uB9CC
     42748\uB9C8\uB9AC \uC0AC\uB9DD \uD588\uB2E4\uACE0 \uD569\uB2C8\uB2E4"
+  AnimalIcon: {fileID: 21300000, guid: 9881919d9302ba645b927a7133560911, type: 3}
   spd: 8
   image: {fileID: 1881606108}
   Check: 0

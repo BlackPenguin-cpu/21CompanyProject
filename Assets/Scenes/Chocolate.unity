@@ -153,9 +153,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimerTime: 0
-  StartString: 
-  AnimalNews: 
-  AnimalIcon: {fileID: 0}
+  StartString: "\uB9C9\uC544\uB77C!"
+  AnimalNews: "\uC5B4\uC9C0\uAC04\uD55C \uB3D9\uBB3C\uB4E4\uC5D0\uAC8C\uB294 \uC808\uB300\uB85C
+    \uCD08\uCF5C\uB9BF\uC744 \uBA39\uC774\uBA74 \uC548\uB429\uB2C8\uB2E4"
+  AnimalIcon: {fileID: 21300000, guid: 4649fc4213f1b914582c8cb326e66eea, type: 3}
   renderer: {fileID: 576444688}
   DogSprites:
   - {fileID: 21300000, guid: 4649fc4213f1b914582c8cb326e66eea, type: 3}

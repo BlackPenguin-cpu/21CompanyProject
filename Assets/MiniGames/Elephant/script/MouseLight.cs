@@ -31,9 +31,10 @@ public class MouseLight : MonoBehaviour
             Timer();
         }
 
-        if (isclick)
+        if (isclick && isEnd)
         {
-            GameClear();
+            GameWin();
+            isEnd = false;
             isclick = false;
         }
 
@@ -85,7 +86,6 @@ public class MouseLight : MonoBehaviour
             img.color = Color.Lerp(img.color, newColor, Time.deltaTime * 5);
             yield return wait;
         }
-        GameWin();
     }
 
     void Timer()

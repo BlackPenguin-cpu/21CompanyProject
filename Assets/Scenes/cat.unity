@@ -653,7 +653,7 @@ MonoBehaviour:
   StartString: "\uAE68\uC6CC\uB77C!"
   AnimalNews: "\uAE38\uACE0\uC591\uC774\uAC00 \uD2B8\uB7ED \uBC11\uC774 \uB530\uB73B\uD574
     \uB4E4\uC5B4\uC654\uC744 \uC218 \uC788\uC73C\uB2C8 \uC870\uC2EC\uD574\uC694! "
-  AnimalIcon: {fileID: 0}
+  AnimalIcon: {fileID: 21300000, guid: 693ba35fec964e645bfb24ffd322f009, type: 3}
   timer: {fileID: 1607664679}
   cat: {fileID: 485652426}
   die: {fileID: 793509342}
