@@ -79,8 +79,8 @@ public class SoundManager : Singleton<SoundManager>
     }
     void Update()
     {
-        BGMOnOff();
-        SFXOnOff();
+        //BGMOnOff();
+        //SFXOnOff();
     }
 
     public void BGMOnOff()

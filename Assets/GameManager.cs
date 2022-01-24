@@ -51,6 +51,7 @@ public class GameManager : Singleton<GameManager>
     UIManager UIDirectory;
     [SerializeField] TextMeshProUGUI NextText;
     [SerializeField] Image NextSceneImage;
+    [SerializeField] Image NextSceneSlider;
 
     [SerializeField] private float DelayedValue = 1;
     private void Start()
@@ -250,7 +251,6 @@ public class GameManager : Singleton<GameManager>
         {
             minigame = FindObjectOfType<MinigameManager>();
             nowTime = Timer = minigame.TimerTime;
-            Debug.Log(minigame.TimerTime);
             Stop = false;
         }
     }
@@ -274,14 +274,18 @@ public class GameManager : Singleton<GameManager>
         float value = 1;
         NextSceneImage.gameObject.SetActive(true);
         NextText.gameObject.SetActive(true);
+        NextSceneSlider.gameObject.SetActive(true);
+        NextText.text = minigame.StartString;
 
         while (value <= 0)
         {
+            Debug.Log("asasdasd");
+            NextSceneSlider.fillAmount = value;
             value -= -0.01f;
-            NextSceneImage.fillAmount = value;
             yield return new WaitForSecondsRealtime(0.01f);
         }
 
+        NextSceneSlider.gameObject.SetActive(true);
         NextSceneImage.gameObject.SetActive(false);
         NextText.gameObject.SetActive(false);
     }
