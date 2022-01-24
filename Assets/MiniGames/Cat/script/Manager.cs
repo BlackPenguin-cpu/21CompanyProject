@@ -112,6 +112,7 @@ public class Manager : MinigameManager
 
     void CameraShake()//고양이 클릭시 카메라 흔들기
     {
+        SoundManager.Instance.PlaySound("meow");
         float x = Random.Range(-0.1f, 0.1f);
         float y = Random.Range(-0.1f, 0.1f);
         Vector3 shake = new Vector3(x, y, -10f);
@@ -138,7 +139,7 @@ public class Manager : MinigameManager
 
     public override IEnumerator GameClear()
     {
-        SoundManager.Instance.PlaySound("meow");
+        
 
         cat.transform.DOMoveX(-17, 4);
         renderer.sprite = catcat[0];

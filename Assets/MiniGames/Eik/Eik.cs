@@ -60,7 +60,10 @@ public class Eik : MinigameManager
         {
             transform.position += new Vector3(Time.deltaTime * spd, 0, 0);
 
-            SoundManager.Instance.PlaySound("Jump");
+            if (Input.GetButtonDown("Fire1"))
+            {
+                SoundManager.Instance.PlaySound("Jump");
+            }
 
             renderer.sprite = eik[0];
         }
@@ -92,5 +95,10 @@ public class Eik : MinigameManager
     public override IEnumerator GameClear()
     {
         yield return new WaitForSeconds(2);
+    }
+
+    public void ClickSound()
+    {
+        SoundManager.Instance.PlaySound("Jump");
     }
 }
