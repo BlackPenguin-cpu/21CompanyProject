@@ -54,6 +54,7 @@ public class PlasticBag : MonoBehaviour
     }
     private void OnBecameInvisible()
     {
+        SoundManager.Instance.PlaySound("plastic");
         isMouseDown = false;
         PlasticBagManager.Instance.ReturnObj(GetComponent<PlasticBag>());
     }

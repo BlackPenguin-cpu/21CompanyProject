@@ -47,6 +47,8 @@ public class MouseLight : MonoBehaviour
 
     public IEnumerator GameClear()
     {
+        SoundManager.Instance.PlaySound("Arrested");
+
         Light.GetComponent<Light>().range = 0;
         BigLight.SetActive(true);
         MeshRenderer mr;
@@ -99,6 +101,7 @@ public class MouseLight : MonoBehaviour
 
     void GameOver()
     {
+        SoundManager.Instance.PlaySound("Bang");
         StartCoroutine(GameManager.Instance.ChangeScene(false, 2f));
     }
 }
