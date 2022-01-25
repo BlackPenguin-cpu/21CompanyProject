@@ -7,10 +7,8 @@ public class StartDash : MinigameManager
 
     public GameObject Light;
     public GameObject Hunter;
-    void Start()
+    private void Awake()
     {
-        HunterSpawn();
-        Light.SetActive(true);
         switch (GameManager.Instance.Level)
         {
             case 1:
@@ -23,6 +21,11 @@ public class StartDash : MinigameManager
                 TimerTime = 5;
                 break;
         }
+    }
+    void Start()
+    {
+        HunterSpawn();
+        Light.SetActive(true);
     }
 
     void Update()
