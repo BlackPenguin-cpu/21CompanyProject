@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class MouseLight : MonoBehaviour
 {
@@ -54,6 +52,7 @@ public class MouseLight : MonoBehaviour
         MeshRenderer mr;
         GameObject.Find("Cube").TryGetComponent(out mr);
         yield return StartCoroutine(EColorChange(HumanAlpha, Color.clear));
+        yield return new WaitForSeconds(2);
     }
 
     void Cursor()
@@ -74,7 +73,6 @@ public class MouseLight : MonoBehaviour
         }
 
     }
-
     private IEnumerator EColorChange(Material img, Color newColor)
     {
         var wait = new WaitForSeconds(0.01f);
@@ -86,8 +84,9 @@ public class MouseLight : MonoBehaviour
             img.color = Color.Lerp(img.color, newColor, Time.deltaTime * 5);
             yield return wait;
         }
+        FunElephant.SetActive(true);
     }
-
+    
     void Timer()
     {
         LimitSecond -= Time.deltaTime;
@@ -95,7 +94,6 @@ public class MouseLight : MonoBehaviour
 
     void GameWin()
     {
-        FunElephant.SetActive(true);
         StartCoroutine(GameManager.Instance.ChangeScene(true, GameClear()));
     }
 
