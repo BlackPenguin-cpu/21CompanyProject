@@ -18,6 +18,8 @@ public class Manager : MinigameManager
     private float shake2 = 0.0000000005f;
     private bool check;
 
+    bool a = false;
+
     public SpriteRenderer renderer;
     public List<Sprite> catcat;
 
@@ -122,8 +124,7 @@ public class Manager : MinigameManager
 
     public override IEnumerator GameOver()
     {
-        SoundManager.Instance.PlaySound("Engine");
-
+        
         speeeeeeeeed += Time.deltaTime * 3.21221f;
         cat.SetActive(false);
         die.SetActive(true);
@@ -131,6 +132,8 @@ public class Manager : MinigameManager
         MainCamara.transform.DOShakePosition(0.5f, 0.1f, 10, 360, false, true);
         if (!check)
         {
+            SoundManager.Instance.PlaySound("Engine");
+
             check = true;
             StartCoroutine(GameManager.Instance.ChangeScene(false, 4f));
         }
