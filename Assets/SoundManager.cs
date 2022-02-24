@@ -16,12 +16,13 @@ public class SoundManager : Singleton<SoundManager>
     public List<Clip> clips;
     public Button BGMBar;
     public Button SFXBar;
-    public bool On = true;
+
+    public bool BGMOn = true;
     public bool SFXOn = true;
 
     public List<Sprite> sprites;
-    public Image Bgmimg;
-    public Image Sfximg;
+    public Image BGMImg;
+    public Image SFXImg;
 
     float SEvolume = 1;
     protected SoundManager() { }
@@ -36,9 +37,8 @@ public class SoundManager : Singleton<SoundManager>
             audioSource.clip = find.clip;
             audioSource.loop = true;
             audioSource.Play();
-
         }
-      
+
 
     }
 
@@ -68,7 +68,7 @@ public class SoundManager : Singleton<SoundManager>
 
         Destroy(audio_object, _clip.length);
     }
-
+    /*
     public void SetMusicVolume(float volume)
     {
         audioSource.volume = volume;
@@ -77,67 +77,59 @@ public class SoundManager : Singleton<SoundManager>
     {
         SEvolume = volume;
     }
-    void Update()
-    {
-        //BGMOnOff();
-        //SFXOnOff();
-    }
-
+    */
     public void BGMOnOff()
     {
-        switch (On)
+        switch (BGMOn)
         {
-            case true:
-                // BGMBar.image.color = Color.green;
-                Bgmimg.sprite = sprites[0];
-                audioSource.volume = 100;
-                break;
             case false:
+                // BGMBar.image.color = Color.green;
+                BGMImg.sprite = sprites[0];
+                audioSource.volume = 100;
+                BGMOn = true;
+                PlayerPrefs.SetInt("BGMOn", BGMOn == false ? 0 : 1);
+                break;
+            case true:
                 //BGMBar.image.color = Color.red;
-                Bgmimg.sprite = sprites[1];
+                BGMImg.sprite = sprites[1];
                 audioSource.volume = 0;
+                BGMOn = false;
+                PlayerPrefs.SetInt("BGMOn", BGMOn == false ? 0 : 1);
                 break;
         }
     }
-
-    public void BGMClick()
-    {
-        if (On)
-        {
-            On = false;
-        }
-        else if (On == false)
-        {
-            On = true;
-        }
-    }
-
     public void SFXOnOff()
     {
-        switch (SFXOn)
+/*        switch (SFXOn)
         {
-            case true:
-                //SFXBar.image.color = Color.green;
-                Sfximg.sprite = sprites[0];
-                SEvolume = 100;
-                break;
             case false:
-                //SFXBar.image.color = Color.red;
-                Sfximg.sprite = sprites[1];
-                SEvolume = 0;
+                SFXBar.image.color = Color.green;
+                SFXImg.sprite = sprites[0];
+                SEvolume = 100;
+                SFXOn = true;
+                PlayerPrefs.SetInt("SFXOn", SFXOn == false ? 0 : 1);
                 break;
-        }
+            case true:
+                SFXBar.image.color = Color.red;
+                SFXImg.sprite = sprites[1];
+                SEvolume = 0;
+                SFXOn = false;
+                PlayerPrefs.SetInt("SFXOn", SFXOn == false ? 0 : 1);
+                break;
+        }*/
+        SFXImg.sprite = sprites[SFXOn ? 1 : 0];
+        SEvolume = SFXOn ? 0 : 100;
+        SFXOn = !SFXOn;
+        PlayerPrefs.SetInt("SFXOn", SFXOn ? 0 : 1);
     }
-
-    public void SFXClick()
+    private void Start()
     {
-        if (SFXOn)
-        {
-            SFXOn = false;
-        }
-        else if (SFXOn == false)
-        {
-            SFXOn = true;
-        }
+        BGMOn = PlayerPrefs.GetInt("BGMOn") == 0 ? false : true;
+        SFXOn = PlayerPrefs.GetInt("SFXOn") == 0 ? false : true;
+        SFXImg.sprite = sprites[0];
+        if (SFXOn) SFXImg.sprite = sprites[0];
+        else SFXImg.sprite = sprites[1];
+        if (BGMOn) BGMImg.sprite = sprites[0];
+        else BGMImg.sprite = sprites[1];
     }
 }

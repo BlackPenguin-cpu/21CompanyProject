@@ -25,6 +25,10 @@ public class Fire : MonoBehaviour
         get { return Hp; }
         set
         {
+            if(value % 6 == 0)
+            {
+                SoundManager.Instance.PlaySound("Fire_fighting");
+            }
             transform.localScale = new Vector3(0.02f * Hp, 0.02f * Hp, 1);
             transform.position = new Vector3(transform.position.x, -4f + Scale * Hp, 1);
             if (value == 0)

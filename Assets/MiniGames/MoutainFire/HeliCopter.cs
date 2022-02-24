@@ -45,6 +45,7 @@ public class HeliCopter : ObjectPool<Water>
         {
             if (cam.ScreenToWorldPoint(Input.mousePosition).x > 0 && rigid.velocity.x < 8)
             {
+                GetComponent<SpriteRenderer>().flipX = true;
                 rigid.AddForce(new Vector2(5 * Time.deltaTime, 0), ForceMode2D.Impulse);
                 if (transform.localEulerAngles.z < 325f)
                 {
@@ -55,6 +56,7 @@ public class HeliCopter : ObjectPool<Water>
             }
             else if (cam.ScreenToWorldPoint(Input.mousePosition).x < 0 && rigid.velocity.x > -8)
             {
+                GetComponent<SpriteRenderer>().flipX = false;
                 rigid.AddForce(new Vector2(-5 * Time.deltaTime, 0), ForceMode2D.Impulse);
                 if (transform.localEulerAngles.z > 325f)
                 {
@@ -65,7 +67,7 @@ public class HeliCopter : ObjectPool<Water>
         }
         else
         {
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, 0), 10 * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, 0),500 * Time.deltaTime); 
         }
     }
 }
