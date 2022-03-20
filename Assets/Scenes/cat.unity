@@ -316,13 +316,13 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 4270d8930b5e5b0439f3b756fe163359, type: 3}
   BGMBar: {fileID: 0}
   SFXBar: {fileID: 0}
-  On: 1
+  BGMOn: 1
   SFXOn: 1
   sprites:
   - {fileID: 21300000, guid: 029bafefb45dbab479b833d9a6ac6924, type: 3}
   - {fileID: 21300000, guid: 5ee3afa9cff22a44ab884ad723ebbad0, type: 3}
-  Bgmimg: {fileID: 0}
-  Sfximg: {fileID: 0}
+  BGMImg: {fileID: 0}
+  SFXImg: {fileID: 0}
 --- !u!4 &112813698
 Transform:
   m_ObjectHideFlags: 0
@@ -512,12 +512,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 22d39db3e0ad04445aaba4b67d42dbb8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3cbdc188cc0c3847a29f963d7712e37, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 10.74, y: 4.89}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -531,8 +531,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 793509342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.02, y: -2.77, z: 0}
-  m_LocalScale: {x: 3.8510327, y: 2.3882375, z: 2.3882375}
+  m_LocalPosition: {x: -3.1, y: -3.6, z: 0}
+  m_LocalScale: {x: 1.6925999, y: 1.3336698, z: 1.2054137}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
