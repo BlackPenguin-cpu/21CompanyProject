@@ -29,15 +29,11 @@ public class GameManager : Singleton<GameManager>
         }
         set
         {
-            if (value > 3)
-            {
-                Life = 3;
-            }
+            value = Mathf.Clamp(value, 0, 3);
+            if (value < Life && value < 0)
+                SoundManager.Instance.PlaySound("Failde");
             if (value <= 0)
-            {
                 isLose = true;
-                Debug.Log(isLose);
-            }
             Life = value;
         }
     }
@@ -148,7 +144,6 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
-            SoundManager.Instance.PlaySound("Failde");
 
             UIDirectory.BackGround.gameObject.SetActive(true);
             UIDirectory.BackGround.color = new Color(0, 0, 0, 1);
@@ -172,7 +167,7 @@ public class GameManager : Singleton<GameManager>
         nowTime = 0;
         if (isLose)
         {
-            SoundManager.Instance.PlaySound("Failde");
+            //게임 오버
             StartCoroutine(GameOver());
         }
         else
@@ -208,6 +203,7 @@ public class GameManager : Singleton<GameManager>
         isLose = false;
         UIDirectory.BackGround.gameObject.SetActive(false);
         UIDirectory.AnimalNews.text = "";
+        Life = 3;
         SceneManager.LoadScene("MainBoard");
     }
     public void GameStart()
@@ -279,7 +275,7 @@ public class GameManager : Singleton<GameManager>
 
         while (value > 0)
         {
-            NextText.transform.position = Vector3.Lerp(NextText.transform.position,new Vector3(960,540,0),0.01f);
+            NextText.transform.position = Vector3.Lerp(NextText.transform.position, new Vector3(960, 540, 0), 0.01f);
             NextSceneSlider.fillAmount = value;
             value -= 0.01f;
             yield return new WaitForSecondsRealtime(0.01f);

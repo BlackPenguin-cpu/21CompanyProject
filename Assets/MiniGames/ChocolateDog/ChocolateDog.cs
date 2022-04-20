@@ -36,6 +36,8 @@ public class ChocolateDog : MinigameManager
     void Update()
     {
         if (!isOver) transform.position += new Vector3(Speed * Time.deltaTime, 0, 0);
+        if (transform.position.x < -8.5f)
+            StartCoroutine(GameManager.Instance.ChangeScene(true, GameClear()));
     }
     public IEnumerator OnDrag()
     {
@@ -45,11 +47,6 @@ public class ChocolateDog : MinigameManager
             yield return new WaitForSecondsRealtime(0.005f);
         }
         renderer.sprite = DogSprites[0];
-    }
-    private void OnBecameInvisible()
-    {
-        Debug.Log("¾Èº¸¿µ");
-        StartCoroutine(GameManager.Instance.ChangeScene(true, GameClear()));
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -69,7 +66,8 @@ public class ChocolateDog : MinigameManager
         yield return new WaitForSeconds(2);
     }
 
-    public override IEnumerator GameClear(){
+    public override IEnumerator GameClear()
+    {
         transform.DOMoveX(-17, 2);
         yield return new WaitForSeconds(2);
     }
