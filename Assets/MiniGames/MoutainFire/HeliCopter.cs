@@ -41,7 +41,7 @@ public class HeliCopter : ObjectPool<Water>
         {
             transform.rotation = Quaternion.Euler(0, 0, 325f);
         }
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && !GameManager.Instance.Pause)
         {
             if (cam.ScreenToWorldPoint(Input.mousePosition).x > 0 && rigid.velocity.x < 8)
             {
@@ -67,7 +67,7 @@ public class HeliCopter : ObjectPool<Water>
         }
         else
         {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, 0),500 * Time.deltaTime); 
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, 0), 500 * Time.deltaTime);
         }
     }
 }

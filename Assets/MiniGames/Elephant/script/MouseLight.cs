@@ -66,7 +66,7 @@ public class MouseLight : MonoBehaviour
         RaycastHit2D[] hitobject = Physics2D.RaycastAll(mouse, Vector3.forward);
         foreach (var item in hitobject)
         {
-            if (item.collider.gameObject.tag == "Human" && Input.GetMouseButtonUp(0))
+            if (item.collider.gameObject.tag == "Human" && Input.GetMouseButtonUp(0) && GameManager.Instance.Pause == false)
             {
                 human = item.collider.gameObject;
                 isclick = true;
@@ -88,7 +88,7 @@ public class MouseLight : MonoBehaviour
         }
         FunElephant.SetActive(true);
     }
-    
+
     void Timer()
     {
         LimitSecond -= Time.deltaTime;

@@ -58,7 +58,7 @@ public class Manager : MinigameManager
             StartCoroutine(GameClear());
         }
 
-        if (Input.GetMouseButtonUp(0) && count < max && !check)
+        if (Input.GetMouseButtonUp(0) && count < max && !check && GameManager.Instance.Pause == false)
         {
             CameraShake();
         }

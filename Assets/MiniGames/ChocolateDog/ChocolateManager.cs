@@ -39,7 +39,7 @@ public class ChocolateManager : MinigameManager
 
     private void MouseDragDect()
     {
-        if (!isGameOver)
+        if (!isGameOver && GameManager.Instance.Pause == false)
         {
 
             if (Input.GetMouseButtonDown(0))
@@ -47,7 +47,7 @@ public class ChocolateManager : MinigameManager
                 btnPressing = true;
                 positition = Input.mousePosition;
             }
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(0) && !GameManager.Instance.Pause)
             {
                 if (positition.x - 2 > Input.mousePosition.x)
                 {

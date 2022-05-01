@@ -56,7 +56,7 @@ public class Eik : MinigameManager
                 StartCoroutine(GameManager.Instance.ChangeScene(true, GameClear()));
             }
         }
-        else if (Input.GetMouseButton(0))
+        else if (Input.GetMouseButton(0) && !GameManager.Instance.Pause)
         {
             transform.position += new Vector3(Time.deltaTime * spd, 0, 0);
 
@@ -67,7 +67,7 @@ public class Eik : MinigameManager
 
             renderer.sprite = eik[0];
         }
-        else if (!Input.GetMouseButton(0))
+        else if (!Input.GetMouseButton(0) && !GameManager.Instance.Pause)
         {
             renderer.sprite = eik[1];
         }

@@ -10,16 +10,16 @@ public class PlasticBag : MonoBehaviour
     Rigidbody2D rigid;
     bool GameEnd;
 
-    private Vector2 Target = new Vector2(0,3.2f);
+    private Vector2 Target = new Vector2(0, 3.2f);
 
-    private bool isMouseDown;        
+    private bool isMouseDown;
     public bool _isMouseDown
     {
         get { return isMouseDown; }
-        set 
+        set
         {
-            if (GameEnd) return;    
-            isMouseDown = value; 
+            if (GameEnd) return;
+            isMouseDown = value;
         }
     }
 
@@ -38,7 +38,7 @@ public class PlasticBag : MonoBehaviour
     }
     void objIsClicked()
     {
-        if (isMouseDown)
+        if (isMouseDown && !GameManager.Instance.Pause)
         {
 
             Vector3 mousepos = MainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -49,7 +49,7 @@ public class PlasticBag : MonoBehaviour
         }
         else
         {
-            transform.position = Vector2.MoveTowards(transform.position, Target,Time.deltaTime * Speed);
+            transform.position = Vector2.MoveTowards(transform.position, Target, Time.deltaTime * Speed);
         }
     }
     private void OnBecameInvisible()
@@ -60,7 +60,7 @@ public class PlasticBag : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Turtle")
+        if (collision.tag == "Turtle")
         {
             Debug.Log("이게 외 안된데?");
             GameEnd = true;
@@ -69,6 +69,6 @@ public class PlasticBag : MonoBehaviour
         }
     }
 
-    
+
 
 }

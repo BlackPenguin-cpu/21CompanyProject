@@ -45,8 +45,6 @@ public class FireManager : ObjectPool<Fire>
     {
         if (Life <= 0 && End == false)
         {
-            
-
             StartCoroutine(GameManager.Instance.ChangeScene(true, GameClear()));
             End = true;
         }

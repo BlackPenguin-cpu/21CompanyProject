@@ -31,7 +31,7 @@ public class CatControlable : MonoBehaviour
     void Update()
     {
         anim.SetInteger("State", (int)state);
-        if (Input.GetMouseButtonDown(0) && JumpCount == 1)
+        if (Input.GetMouseButtonDown(0) && JumpCount == 1 && !GameManager.Instance.Pause)
         {
             JumpCount = 0;
             state = State.JUMP;

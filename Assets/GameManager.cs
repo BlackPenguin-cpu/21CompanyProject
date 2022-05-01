@@ -17,6 +17,7 @@ public class GameManager : Singleton<GameManager>
     public int Combo;
     public int Level;
     public int ClearCount;
+    public bool Pause;
 
     [SerializeField] bool isLose;
     [SerializeField] private List<string> StageName;
@@ -122,6 +123,7 @@ public class GameManager : Singleton<GameManager>
 
         minigame = FindObjectOfType<MinigameManager>();
         UIDirectory.ResultCanvas.gameObject.SetActive(true);
+        Pause = true;
         UIDirectory.AnimalNews.text = minigame.AnimalNews;
         UIDirectory.AnimalIcon.sprite = minigame.AnimalIcon;
         UIDirectory.AnimalAll.text = UIDirectory.AnimalAllText + ClearCount;
@@ -170,6 +172,7 @@ public class GameManager : Singleton<GameManager>
         ScoreText.text = "";
 
         nowTime = 0;
+        Pause = false;
         if (isLose)
         {
             SoundManager.Instance.PlaySound("Failde");
@@ -222,7 +225,7 @@ public class GameManager : Singleton<GameManager>
         StartCoroutine(NextGame());
     }
 
-    float LevelTimeScale()
+    public float LevelTimeScale()
     {
         return 1.0f + (0.3f * Level);
     }
@@ -244,7 +247,7 @@ public class GameManager : Singleton<GameManager>
     }
     private void OnLevelWasLoaded(int level)
     {
-        if (level != 1)
+        if (level != 0)
         {
             minigame = FindObjectOfType<MinigameManager>();
             nowTime = Timer = minigame.TimerTime;
@@ -268,6 +271,7 @@ public class GameManager : Singleton<GameManager>
     }
     public IEnumerator NextScenePage()
     {
+        Pause = true;
         float value = 1;
         Time.timeScale = 0;
         NextSceneImage.gameObject.SetActive(true);
@@ -279,7 +283,7 @@ public class GameManager : Singleton<GameManager>
 
         while (value > 0)
         {
-            NextText.transform.position = Vector3.Lerp(NextText.transform.position,new Vector3(960,540,0),0.01f);
+            NextText.transform.position = Vector3.Lerp(NextText.transform.position, new Vector3(960, 540, 0), 0.01f);
             NextSceneSlider.fillAmount = value;
             value -= 0.01f;
             yield return new WaitForSecondsRealtime(0.01f);
@@ -289,5 +293,6 @@ public class GameManager : Singleton<GameManager>
         NextSceneImage.gameObject.SetActive(false);
         NextText.gameObject.SetActive(false);
         Time.timeScale = LevelTimeScale();
+        Pause = false;
     }
 }

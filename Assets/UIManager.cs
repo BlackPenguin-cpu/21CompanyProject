@@ -21,41 +21,4 @@ public class UIManager : Singleton<UIManager>
     public Image AnimalIcon;
     public string AnimalAllText;
 
-    //void Start()
-    //{
-
-    //}
-
-    //void Update()
-    //{
-
-    //}
-
-
-    //public void ScreenPrint(bool isWin)
-    //{
-    //    if (isWin)
-    //    {
-    //        BackGround.color = new Color(0, 1, 0, 1);
-    //    }
-    //    else
-    //    {
-    //        BackGround.color = new Color(0, 1, 0, 1);
-
-    //    }
-    //}
-
-    //public IEnumerator ClearTextEffect(int AddValue, float Delay)
-    //{
-    //    int ScoreValue = int.Parse(Score.text);
-    //    int targetValue = ScoreValue + AddValue;
-    //    float Value = AddValue / Delay;
-    //    while (targetValue <= ScoreValue)
-    //    {
-    //        ScoreValue += (int)(Value * Time.deltaTime);
-    //        Score.text = ScoreValue.ToString();
-    //        yield return 0;
-    //    }
-    //}
-
 }

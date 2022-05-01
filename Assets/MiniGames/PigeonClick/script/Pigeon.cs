@@ -73,9 +73,8 @@ public class Pigeon : MinigameManager
 
     void PigeonClick()
     {
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && GameManager.Instance.Pause == false)
         {
-            SoundManager.Instance.PlaySound("flyng");
 
             Vector2 mousepos = MainCamera.ScreenToWorldPoint(Input.mousePosition);
             if (Physics2D.Raycast(mousepos, Vector3.forward))
@@ -83,6 +82,7 @@ public class Pigeon : MinigameManager
                 RaycastHit2D Hitobject = Physics2D.Raycast(mousepos, Vector3.forward);
                 if (Hitobject.collider.gameObject.tag == "Pigeon")
                 {
+                    SoundManager.Instance.PlaySound("flyng");
                     Hitobject.collider.GetComponent<PigeonFly>().click = true;
                     Hitobject.collider.GetComponent<PigeonFly>().random = true;
                 }
