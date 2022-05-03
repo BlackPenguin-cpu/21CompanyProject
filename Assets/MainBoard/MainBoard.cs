@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class MainBoard : MonoBehaviour
 {
-    // Start is called before the first frame update
+    bool isClicked;
+    public Image FadeScreen;
     void Start()
     {
         SoundManager.Instance.Playbgm("Main_BGM");
@@ -16,14 +17,25 @@ public class MainBoard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void GoGame()
     {
-       // SoundManager.Instance.Playbgm("메인화면");
-
-        Debug.Log("확인 gogo");
+        if (!isClicked)
+        {
+            StartCoroutine(GoGameCorutine());
+            isClicked = true;
+        }
+    }
+    IEnumerator GoGameCorutine()
+    {
         SoundManager.Instance.PlaySound("Game_start");
+        FadeScreen.color = new Color(1, 1, 1, 0);
+        while (FadeScreen.color.a < 1)
+        {
+            FadeScreen.color += new Color(0, 0, 0, 0.01f);
+            yield return new WaitForSeconds(0.01f);
+        }
         GameManager.Instance.GameStart();
     }
 

@@ -133,6 +133,7 @@ public class GameManager : Singleton<GameManager>
             //StageText.text = "GREAT!!! - Life: " + Life;
             ClearCount++;
             Combo++;
+            UIDirectory.AnimalIcon.color = new Color(1, 1, 1, 1);
             UIDirectory.Combo.text = "Combo : " + Combo.ToString();
             Score += 104 + (Random.Range(19, 22) * Combo);
             UIDirectory.AnimalAll.text = UIDirectory.AnimalAllText + ClearCount;
@@ -149,6 +150,7 @@ public class GameManager : Singleton<GameManager>
 
             UIDirectory.BackGround.gameObject.SetActive(true);
             UIDirectory.BackGround.color = new Color(0, 0, 0, 1);
+            UIDirectory.AnimalIcon.color = new Color(1, 1, 1, 0);
             UIDirectory.Score.text = Score.ToString();
             _Life--;
             Combo = 0;
