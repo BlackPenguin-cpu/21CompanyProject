@@ -89,5 +89,7 @@ public class SoundManager : Singleton<SoundManager>
         SFXOn = PlayerPrefs.GetInt("SFXOn") == 0 ? true : false;
         BGMImg.sprite = sprites[BGMOn ? 0 : 1];
         SFXImg.sprite = sprites[SFXOn ? 0 : 1];
+        audioSource.volume = BGMOn ? 100 : 0;
+        SEvolume = SFXOn ? 100 : 0;
     }
 }
