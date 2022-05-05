@@ -68,73 +68,26 @@ public class SoundManager : Singleton<SoundManager>
 
         Destroy(audio_object, _clip.length);
     }
-    /*
-    public void SetMusicVolume(float volume)
-    {
-        audioSource.volume = volume;
-    }
-    public void SetSEVolume(float volume)
-    {
-        SEvolume = volume;
-    }
-    */
+
     public void BGMOnOff()
     {
-        //switch (BGMOn)
-        //{
-        //    case false:
-        //        // BGMBar.image.color = Color.green;
-        //        BGMImg.sprite = sprites[0];
-        //        audioSource.volume = 100;
-        //        BGMOn = true;
-        //        PlayerPrefs.SetInt("BGMOn", BGMOn == false ? 0 : 1);
-        //        break;
-        //    case true:
-        //        //BGMBar.image.color = Color.red;
-        //        BGMImg.sprite = sprites[1];
-        //        audioSource.volume = 0;
-        //        BGMOn = false;
-        //        PlayerPrefs.SetInt("BGMOn", BGMOn == false ? 0 : 1);
-        //        break;
-        //}
-
         BGMOn = !BGMOn;
         BGMImg.sprite = sprites[BGMOn ? 0 : 1];
         audioSource.volume = BGMOn ? 100 : 0;
-        PlayerPrefs.SetInt("BGMOn", BGMOn ? 1 : 0);
+        PlayerPrefs.SetInt("BGMOn", BGMOn ? 0 : 1);
     }
     public void SFXOnOff()
     {
-        /*        switch (SFXOn)
-                {
-                    case false:
-                        SFXBar.image.color = Color.green;
-                        SFXImg.sprite = sprites[0];
-                        SEvolume = 100;
-                        SFXOn = true;
-                        PlayerPrefs.SetInt("SFXOn", SFXOn == false ? 0 : 1);
-                        break;
-                    case true:
-                        SFXBar.image.color = Color.red;
-                        SFXImg.sprite = sprites[1];
-                        SEvolume = 0;
-                        SFXOn = false;
-                        PlayerPrefs.SetInt("SFXOn", SFXOn == false ? 0 : 1);
-                        break;
-                }*/
         SFXOn = !SFXOn;
         SFXImg.sprite = sprites[SFXOn ? 0 : 1];
         SEvolume = SFXOn ? 100 : 0;
-        PlayerPrefs.SetInt("SFXOn", SFXOn ? 1 : 0);
+        PlayerPrefs.SetInt("SFXOn", SFXOn ? 0 : 1);
     }
     private void Start()
     {
-        BGMOn = PlayerPrefs.GetInt("BGMOn") == 0 ? false : true;
-        SFXOn = PlayerPrefs.GetInt("SFXOn") == 0 ? false : true;
-        SFXImg.sprite = sprites[0];
-        if (SFXOn) SFXImg.sprite = sprites[0];
-        else SFXImg.sprite = sprites[1];
-        if (BGMOn) BGMImg.sprite = sprites[0];
-        else BGMImg.sprite = sprites[1];
+        BGMOn = PlayerPrefs.GetInt("BGMOn") == 0 ? true : false;
+        SFXOn = PlayerPrefs.GetInt("SFXOn") == 0 ? true : false;
+        BGMImg.sprite = sprites[BGMOn ? 0 : 1];
+        SFXImg.sprite = sprites[SFXOn ? 0 : 1];
     }
 }
